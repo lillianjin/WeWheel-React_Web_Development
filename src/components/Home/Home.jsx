@@ -4,7 +4,7 @@ import { Button, Input } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './Home.css';
 import PropTypes from 'prop-types';
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.gif'
 import axios from 'axios'
 import { faStar, faList, faImage, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
