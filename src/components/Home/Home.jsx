@@ -19,7 +19,7 @@ class Home extends Component {
         <div className='Home'>
           <div className='header'>
           <Link to = '/'>
-            <img className="logo" src="assets/logo.jpg" alt="logo"></img>
+            <img className="logo" src="../assets/logo.svg" alt="logo"></img>
           </Link>
           <h1 className='title'>WeWheel</h1>
           <div className="toggle-container">
