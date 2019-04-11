@@ -4,7 +4,7 @@ import { Button, Input } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './Home.css';
 import PropTypes from 'prop-types';
-
+import logo from '../assets/logo.jpg'
 import axios from 'axios'
 import { faStar, faList, faImage, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +19,7 @@ class Home extends Component {
         <div className='Home'>
           <div className='header'>
           <Link to = '/'>
-            <img className="logo" src="assets/logo.jpg" alt="logo"></img>
+            <img className="logo" src={logo} alt="logo"/>
           </Link>
           <h1 className='title'>WeWheel</h1>
           <div className="toggle-container">
