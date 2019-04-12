@@ -1,5 +1,3 @@
-
-
 .home-bg{
   position: absolute;
   top: 8vw;
@@ -44,7 +42,41 @@
   z-index: 2;
 }
 
-.home-content{
-
+.home-row{
+  position: absolute;
+  background-color: aquamarine;
+  height: 10em;
+  width: 100%;
+  justify-content: center;
+  margin-right: 0;
+  margin-left: 0;
 }
 
+.home-col{
+  display: inline-block;
+  color: aliceblue;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.card:hover{
+  cursor: pointer;
+}
+
+.choice1, .choice2{
+  width: 100%;
+  height: 10em;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+}
+
+.choice1{
+  background-image: url("../assets/card1.jpg");
+}
+
+.choice2{
+  background-image: url("../assets/card2.jpg");
+}
