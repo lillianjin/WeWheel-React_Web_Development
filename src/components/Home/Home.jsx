@@ -3,6 +3,7 @@ import './Home.css';
 import NavBar from '../NavBar/NavBar.jsx';
 import MyCarousel from './MyCarousel.jsx';
 import Choices from './Choices.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 class Home extends Component {
 
@@ -16,6 +17,7 @@ class Home extends Component {
           SHARE A CAR TODAY!
           </h1>
           <Choices/>
+          <Footer/>
         </div>
     )
   }
