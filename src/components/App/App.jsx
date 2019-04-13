@@ -4,6 +4,8 @@ import './App.css';
 
 // Include your new Components here
 import Home from '../Home/Home.jsx';
+import Register from '../Register/Register.jsx';
+import Login from '../Login/Login.jsx';
 
 class App extends Component {
   render() {
@@ -12,6 +14,8 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={Home}/>
+            <Route  path="/register" component={Register}/>
+            <Route  path="/login" component={Login}/>
           </div>
         </Router>
       </div>

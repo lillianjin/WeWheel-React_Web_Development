@@ -12,26 +12,26 @@ class NavBar extends Component {
       return(
         <div>
           <Navbar bg="dark" variant="dark" className="justify-content-between">
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="#/">
               <img alt="logo" src={logo} width="30" height="30"
                 className="logo"/>
               <p className="wewheel"> WeWheel</p>
             </Navbar.Brand>
-            <Nav activeKey="/">
+            <Nav activeKey="#">
               <Nav.Item>
-                <Nav.Link href="/">
+                <Nav.Link href="#/">
                   <FontAwesomeIcon className="icon" icon={faHome} size="sm" />
                   {" HOME"}
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/signup">
+                <Nav.Link href="#/login">
                   <FontAwesomeIcon className="icon" icon={faSignInAlt} size="sm" />
                   {" LOGIN"}
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/login">
+                <Nav.Link href="#/register">
                   <FontAwesomeIcon className="icon" icon={faUserPlus} size="sm" />
                   {" SIGNUP"}
                 </Nav.Link>
@@ -39,7 +39,7 @@ class NavBar extends Component {
             </Nav>
           </Navbar>
         </div>
-      );  
+      );
   }
 }
 
