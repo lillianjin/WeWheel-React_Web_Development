@@ -1,38 +1,34 @@
 import React, { Component } from 'react'
-// import { Link } from './node_modules/react-router-dom'
-import card1 from '../assets/card1.jpg'
-import card2 from '../assets/card2.jpg'
-import { Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import {Segment, Grid, Header} from 'semantic-ui-react'
 import './Home.css'
 
 class Choices extends Component {
 
   render() {
     return(
-      <div>
-        <div className="home-row">
-          <Col xs={12} sm={6} md={5} className="home-col">
-            <Card className="choice1">
-              <Card.Body>
-                <Card.Title>Rent a Car</Card.Title>
-                <Card.Text>
-                  Our car rental service provides any available cars at your area. You can explore all the sights. Find out how to get the best rates on your ideal vehicle.
-                    </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} sm={6} md={5} className="home-col">
-            <Card className="choice2">
-              <Card.Body>
-                <Card.Title>Share a Car</Card.Title>
-                <Card.Text>
-                  Have an idle car at home? You can add the information of your car on WeWheel to maximize the value of your car. Start to be an owner today!
-                    </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </div>
-      </div>
+      <Segment style={{ padding: '0', marginTop: '0', marginBottom: '0', border: 'none' }}>
+        <Grid celled='internally' columns='2' stackable>
+          <Grid.Row textAlign='center' style={{ backgroundColor: '#52616b',  margin: '0' }}>
+            <Grid.Column style={{ marginTop: '2vw', marginBottom: '2vw' }}>
+              <Link to='/rent'>
+                <Header as='h3' style={{ fontSize: '3vw', marginBottom: '1.5vw', marginTop: '1vw', color: '#c9d6df', cursor: 'pointer' }}>
+                  Rent a Car
+                </Header>
+              </Link>
+              <p style={{ fontSize: '2vw', marginLeft: '2vw', marginRight: '2vw', color: '#f0f5f9'  }}>Our car rental service provides any available cars at your area. You can explore all the sights. Find out how to get the best rates on your ideal vehicle.</p>
+            </Grid.Column>
+            <Grid.Column style={{ marginTop: '2vw', marginBottom: '2vw' }}>
+              <Link to='/share'>
+                <Header as='h3' style={{ fontSize: '3vw', marginBottom: '1.5vw', marginTop: '1vw', color: '#c9d6df', cursor: 'pointer' }}>
+                  Share a Car
+                </Header>
+              </Link>
+              <p style={{ fontSize: '2vw', marginLeft: '2vw', marginRight: '2vw', color: '#f0f5f9' }}>Have an idle car at home? You can add the information of your car on WeWheel to maximize the value of your car!</p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     );  
   }
 }
