@@ -6,6 +6,7 @@ import './App.css';
 import Home from '../Home/Home.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
+import RentCar from '../RentCar/RentCar.jsx';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route  path="/register" component={Register}/>
             <Route  path="/login" component={Login}/>
+            <Route  path="/rent" component={RentCar}/>
           </div>
         </Router>
       </div>
