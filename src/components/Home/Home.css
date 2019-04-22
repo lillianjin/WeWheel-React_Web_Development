@@ -1,0 +1,105 @@
+.body{
+  background-color: black;
+}
+/*
+  format the background color
+*/
+
+.home-bg-filter {
+  position: absolute;
+  top: 8vw;
+  height: 43.5vw;
+  width: 100%;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  z-index: 0;
+}
+
+/*
+  format the slogan 
+*/
+.home-slogan{
+  position: absolute;
+  width: 100%;
+  top: 12vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+}
+
+
+/*
+  format the cards components
+*/
+.choices{
+  width: 100%;
+  padding: 10px;
+  background: #1abc9c;
+}
+
+.home-row{
+  width: 100%;
+  display: table; 
+  background-color: aquamarine;
+}
+
+.home-col{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+/* .card-title:hover{
+  cursor: pointer;
+} */
+
+/* .choice1, .choice2{
+  width: 100%;
+  height: 14em;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9; 
+  border-radius: 0;
+} */
+
+.home-card1, .home-card2{
+  width: 50%;
+  float: left;
+  min-width: 10em;
+}
+
+.card-title{
+  text-align: center;
+  font-weight: bold;
+  color: brown;
+}
+
+.card-text{
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+.choice1, .choice2{
+  color: aliceblue;
+}
+
+.choice1{
+  background-image: url("../assets/card1.jpg");
+}
+
+.choice2{
+  background-image: url("../assets/card2.jpg");
+} */
