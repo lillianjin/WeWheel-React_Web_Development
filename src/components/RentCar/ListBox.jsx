@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Rating, Card, Image, Dropdown, Input, Item, Grid, Icon, Feed} from 'semantic-ui-react'
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import { Button, Image, Grid, Icon} from 'semantic-ui-react'
 
 export class ListBox extends Component {
     // constructor(props) {
@@ -10,8 +8,8 @@ export class ListBox extends Component {
     // };
 
     render(){
-        const cards = this.props.cardinfo;
-        const mycards = cards.map((card, i) => {
+        const{ cardinfo, viewDetails} = this.props;
+        const mycards = cardinfo.map((card, i) => {
             return (
                 <div className="ui card" style={{maxWidth: '90%', minWidth:'90%', height: '20vw', left: '5%'}} key={"card"+i}>
                     <div className="content" style={{padding: '0', height: '100%'}}>
@@ -19,7 +17,7 @@ export class ListBox extends Component {
                             <div className="item" style={{height: '100%'}}>
                                 <Image src={card.Car.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
                                 <div className="content" style={{padding: '1vw 2vw'}}>
-                                    <div className="header" style={{margin: '1vw 0', fontSize: '2vw'}}>
+                                    <div className="header" style={{margin: '0', fontSize: '2vw'}}>
                                         {card.Car.Brand}
                                     </div>
                                     <div className="meta" style={{fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw", color: "#ff5959"}}>
@@ -58,20 +56,13 @@ export class ListBox extends Component {
                                     </div>
                                 </div>
                                 <div className="extra" style={{textAlign: "right"}}>
-                                    <Link style={{ cursor: 'pointer' }}
-                                        to={
-                                            {
-                                                pathname: `/rent/${card._id}`,
-                                                state: {
-                                                    details: card,
-                                                }
-                                            }
-                                        }
+                                    <Button color='vk' compact basic
+                                        onClick={viewDetails}
+                                        name={card}
                                     >
-                                        <Button color='vk' compact basic>
-                                            <Icon name='plus square outline' /> View more
-                                        </Button>
-                                    </Link>
+                                        <Icon name='plus square outline' /> 
+                                        View more
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +71,10 @@ export class ListBox extends Component {
             </div>
             );
         });
-        return(
-            <Grid divided style={{margin: "0", padding: '0'}}>
-                <Grid.Row style={{margin: "0"}}>
+
+        return (
+            <Grid divided style={{ margin: "0", padding: '0' }}>
+                <Grid.Row style={{ margin: "0" }}>
                     {mycards}
                 </Grid.Row>
             </Grid>
