@@ -39,7 +39,7 @@
 
 .search-box {
   position: absolute;
-  overflow: hidden;
+  overflow: auto;
   left: 5%;
   top: 5%;
   width: 25%;
@@ -58,13 +58,25 @@
 
 .map {
   position: absolute;
+  overflow: auto;
   right: 5%;
   top: 8%;
   width: 60%;
   height: 90%;
   padding: 0;
+  margin: 0;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sort-box{
+  position: absolute;
+  height: 3%;
+  top: 3%;
+  left: 35%;
+  color: aliceblue;
+  font-size: 1.2vw;
+  font-weight: bold;
 }
 
 .toggle-box{
