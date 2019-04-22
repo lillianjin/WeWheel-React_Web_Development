@@ -7,18 +7,20 @@ import Home from '../Home/Home.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
 import RentCar from '../RentCar/RentCar.jsx';
+import Posts from '../Posts/Posts.jsx';
 
 class App extends Component {
   render() {
     return (
       <div id="root">
         <Router>
-          <div>
+          <Switch>
             <Route exact path="/" component={Home}/>
-            <Route  path="/register" component={Register}/>
-            <Route  path="/login" component={Login}/>
-            <Route  path="/rent" component={RentCar}/>
-          </div>
+            <Route path="/register" component={Register}/>
+            <Route path="/login" component={Login}/>
+            <Route exact path="/rent" component={RentCar}/>
+            <Route path="/rent/:index" component={Posts}/>
+          </Switch>
         </Router>
       </div>
     );

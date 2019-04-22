@@ -9,7 +9,7 @@ const mapStyles = {
     }
   };
 
-export class Map_ extends React.Component {
+export class Map extends React.Component {
     constructor(props) {
         super(props);
         const { lat, lng } = this.props.initialCenter;
@@ -122,10 +122,10 @@ export class Map_ extends React.Component {
     }
 
 }
-export default Map_;
+export default Map;
 
-Map_.defaultProps = {
-  zoom: 13,
+Map.defaultProps = {
+  zoom: 12,
   initialCenter: {
     lat: 40.114040,
     lng: -88.224433
