@@ -50,8 +50,7 @@ export class ListBox extends Component {
                                         </div>
                                     </div>
                                     <div className="ui">
-                                        <b>Rating:&nbsp;</b>
-                                        <Rating defaultRating={card.Car.Rating} icon='star' maxRating={5} disabled />
+                                        <b>Rating:&nbsp;</b>{card.Car.Rating}
                                     </div>
                                     <div className="ui">
                                         <b>Rent Count:&nbsp;</b>
