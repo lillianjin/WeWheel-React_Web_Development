@@ -68,10 +68,13 @@ class RentCar extends Component {
         locationflg: false,
         capacityflg: false,
         dateflg: false
-      }
+      },
+      isDetail: false,
+      currtPost: ""
     };
 
     this.onToggle = this.onToggle.bind(this);
+    this.viewDetails = this.viewDetails.bind(this);
     this.searchAll = this.searchAll.bind(this);
     this.getUniqueValuesOfKey = this.getUniqueValuesOfKey.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -95,6 +98,13 @@ class RentCar extends Component {
   onToggle() {
     this.setState({
       toggleActive: !this.state.toggleActive
+    });
+  }
+
+  viewDetails(e, { name }) {
+    this.setState({
+      isDetail: !this.state.isDetail,
+      currtPost: name
     });
   }
 
@@ -211,97 +221,111 @@ class RentCar extends Component {
     const posts = this.state.search_result;
     const locations = this.getUniqueValuesOfKey(posts, 'Location');
     let MapView = this.state.toggleActive;
-    if (MapView) {
-      return (
-        <div>
-          <NavBar />
-          <div className="rent">
-            <div className="search-box">
-              <FilterBox
-                handleChange={this.handleChange}
-                handleStartChange={this.handleStartChange}
-                handleEndChange={this.handleEndChange}
-                clickHandler={this.clickHandler}
-                flags={this.state.flags}
-                total_res={this.state.total_res}
-              />
-            </div>
-            <div className="sort-box">
-              <Icon name="filter"/>
-              <span>
-                Sort Results By &nbsp;
-                <Dropdown options={options1} defaultValue={options1[0].value} name="sortby" onChange = {this.sort1}/>
-              </span>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <span>
+    let isDetail = this.state.isDetail;
+    if (!isDetail){
+      if (MapView) {
+        return (
+          <div>
+            <NavBar />
+            <div className="rent">
+              <div className="search-box">
+                <FilterBox
+                  handleChange={this.handleChange}
+                  handleStartChange={this.handleStartChange}
+                  handleEndChange={this.handleEndChange}
+                  clickHandler={this.clickHandler}
+                  flags={this.state.flags}
+                  total_res={this.state.total_res}
+                />
+              </div>
+              <div className="sort-box">
                 <Icon name="filter"/>
-                <Dropdown options={options2} defaultValue={options2[0].value} name="direction" onChange = {this.sort2}/>
-              </span>
+                <span>
+                  Sort Results By &nbsp;
+                  <Dropdown options={options1} defaultValue={options1[0].value} name="sortby" onChange = {this.sort1}/>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>
+                  <Icon name="filter"/>
+                  <Dropdown options={options2} defaultValue={options2[0].value} name="direction" onChange = {this.sort2}/>
+                </span>
+              </div>
+              <div className="toggle-label">
+                Map View
             </div>
-            <div className="toggle-label">
-              Map View
+              <div className="toggle-box">
+                <ToggleButton
+                  value={this.state.toggleActive}
+                  thumbStyle={{ borderRadius: 2 }}
+                  trackStyle={{ borderRadius: 2 }}
+                  onToggle={this.onToggle}
+                />
+              </div>
+              <div className="map">
+                <MapBox posts={this.state.search_result} locations={locations} onToggle = {this.onToggle} />
+              </div>
+            </div>
+            <Footer />
           </div>
-            <div className="toggle-box">
-              <ToggleButton
-                value={this.state.toggleActive}
-                thumbStyle={{ borderRadius: 2 }}
-                trackStyle={{ borderRadius: 2 }}
-                onToggle={this.onToggle}
-              />
+        )
+      } else {
+        return (
+          <div>
+            <NavBar />
+            <div className="rent">
+              <div className="search-box">
+                <FilterBox
+                  handleChange={this.handleChange}
+                  handleStartChange={this.handleStartChange}
+                  handleEndChange={this.handleEndChange}
+                  clickHandler={this.clickHandler}
+                  flags={this.state.flags}
+                  total_res={this.state.total_res}
+                />
+              </div>
+              <div className="sort-box">
+                <Icon name="filter"/>
+                <span>
+                  Sort Results By &nbsp;
+                  <Dropdown options={options1} defaultValue={options1[0].value} name="sortby" onChange = {this.sort1}/>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Icon name="filter"/>
+                <span>
+                  <Dropdown options={options2} defaultValue={options2[0].value} name="direction" onChange = {this.sort2}/>
+                </span>
+              </div>
+              <div className="toggle-label">
+                Map View
             </div>
-            <div className="map">
-              <MapBox posts={this.state.search_result} locations={locations} />
+              <div className="toggle-box">
+                <ToggleButton
+                  value={this.state.toggleActive}
+                  thumbStyle={{ borderRadius: 2 }}
+                  trackStyle={{ borderRadius: 2 }}
+                  onToggle={this.onToggle}
+                />
+              </div>
+              <div className="map">
+                <ListBox cardinfo={this.state.search_result} viewDetails={this.viewDetails}/>
+              </div>
             </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      )
+        )
+      }
     } else {
-      return (
+      return(
         <div>
-          <NavBar />
-          <div className="rent">
-            <div className="search-box">
-              <FilterBox
-                handleChange={this.handleChange}
-                handleStartChange={this.handleStartChange}
-                handleEndChange={this.handleEndChange}
-                clickHandler={this.clickHandler}
-                flags={this.state.flags}
-                total_res={this.state.total_res}
-              />
-            </div>
-            <div className="sort-box">
-              <Icon name="filter"/>
-              <span>
-                Sort Results By &nbsp;
-                <Dropdown options={options1} defaultValue={options1[0].value} name="sortby" onChange = {this.sort1}/>
-              </span>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Icon name="filter"/>
-              <span>
-                <Dropdown options={options2} defaultValue={options2[0].value} name="direction" onChange = {this.sort2}/>
-              </span>
-            </div>
-            <div className="toggle-label">
-              Map View
-          </div>
-            <div className="toggle-box">
-              <ToggleButton
-                value={this.state.toggleActive}
-                thumbStyle={{ borderRadius: 2 }}
-                trackStyle={{ borderRadius: 2 }}
-                onToggle={this.onToggle}
-              />
-            </div>
-            <div className="map">
-              <ListBox cardinfo={this.state.search_result} />
-            </div>
-          </div>
-          <Footer />
+        <NavBar />
+        <div className="rent">
+        
         </div>
-      )
+        <Footer />
+      </div>
+      );
     }
+    
 
   }
 }

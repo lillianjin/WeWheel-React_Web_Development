@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Card, Image, Rating, Icon} from 'semantic-ui-react';
+import ReactDOM from "react-dom";
+import {Card, Image, Rating, Icon, Button} from 'semantic-ui-react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import Map from './Map.jsx';
 import Paper from '@material-ui/core/Paper';
@@ -22,6 +23,7 @@ export class MapBox extends Component {
         };
         this.onMarkerClick=this.onMarkerClick.bind(this);
         this.onMarkerClose=this.onMarkerClose.bind(this);
+        this.onInfoWindowOpen=this.onInfoWindowOpen.bind(this);
     };
 
     onMarkerClick = (props, marker, e) => {
@@ -34,7 +36,7 @@ export class MapBox extends Component {
         let temp_content = [];
         let posts = this.props.posts;
         for (let i = 0; i < posts.length; i++) {
-          if (posts[i].Location == this.state.selectedPlace.name) {
+          if (posts[i].Location === this.state.selectedPlace.name) {
             temp_content.push(posts[i]);
           }
         }
@@ -42,6 +44,21 @@ export class MapBox extends Component {
             model_content: temp_content,
         });
     };
+
+    onInfoWindowOpen(props, e) {
+        const button = (
+          <Button compact basic
+            floated='right'
+            onClick={this.props.onToggle}
+          >
+            View More
+          </Button>
+        );
+        ReactDOM.render(
+          React.Children.only(button),
+          document.getElementById("iwc")
+        );
+      }
 
     onMarkerClose = props => {
         if (this.state.showingInfoWindow) {
@@ -70,7 +87,6 @@ export class MapBox extends Component {
                             name={loc.name}
                         />
                     )
-
                 }
             })
         }
@@ -135,6 +151,9 @@ export class MapBox extends Component {
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}
                     onClose={this.onMarkerClose}
+                    onOpen={e => {
+                        this.onInfoWindowOpen(this.props, e);
+                    }}
                 >
                     <Paper style={{marginRight: "1vw", boxShadow: 'none'}}>
                         <Typography
@@ -147,8 +166,9 @@ export class MapBox extends Component {
                         <Typography component='p'>
                             {models}
                         </Typography>
+                        <div id="iwc"/>
                     </Paper>
-                    </InfoWindow>
+                </InfoWindow>
             </Map>
         );
     }

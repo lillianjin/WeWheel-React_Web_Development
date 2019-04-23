@@ -36,11 +36,21 @@ class Login extends Component {
       onSubmit(event){
         event.preventDefault();
         // create HTTP body message
-        const name = encodeURIComponent(this.state.user.username);
-        const email = encodeURIComponent(this.state.user.email);
-        const password = encodeURIComponent(this.state.user.password);
-        const formData = `UserName=${name}&Email=${email}&Password=${password}`;
-
+        axios.post('http://localhost:4000/api/users/login', {
+          password: this.state.user.password,
+          UserName:this.state.user.username
+        })
+        .then((response) => {
+          console.log("Login successfully")
+          console.log(response);
+          this.setState({isLoggedin:true});
+          this.props.history.push( '/',null)
+          console.log(this.state)
+        })
+        .catch((error) => {
+          console.log("Unable to login")
+          console.log(error);
+        });
 
       }
 
@@ -66,7 +76,7 @@ class Login extends Component {
             return(
               <Redirect to = {
                 {
-                  pathname:'/profile',
+                  pathname:'/',
                   state:{isLoggedIn:false}
                 }
               }/>
@@ -83,11 +93,11 @@ class Login extends Component {
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Form.Field>
                                   <label>Username</label>
-                                  <input placeholder='Your Username' onChange={this.onChangeUserName} />
+                                  <input placeholder='Your Username' onChange={this.onChangeUserName} required />
                                 </Form.Field>
                                 <Form.Field>
                                   <label>Password</label>
-                                  <input placeholder='Password' onChange={this.onChangePassword} />
+                                  <input placeholder='Password' type = "password" onChange={this.onChangePassword} required/>
                                 </Form.Field>
                                 <Button color = 'black' fluid size='large' type='submit'>Log in</Button>
                             </Form>
