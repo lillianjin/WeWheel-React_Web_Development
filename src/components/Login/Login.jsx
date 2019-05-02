@@ -8,8 +8,7 @@ import NavBar from '../NavBar/NavBar.jsx'
 import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './login.scss'
-
-
+import Authentication from '../Authentication/Authentication.js'
 
 
 class Login extends Component {
@@ -44,8 +43,8 @@ class Login extends Component {
           console.log("Login successfully")
           console.log(response);
           this.setState({isLoggedin:true});
+          Authentication.login(this.state.user.username)
           this.props.history.push( '/',null)
-          console.log(this.state)
         })
         .catch((error) => {
           console.log("Unable to login")
