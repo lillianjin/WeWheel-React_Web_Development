@@ -13,6 +13,7 @@ import update from 'immutability-helper';
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { useAsync } from "react-async"
+
 //import 'font-awesome/css/font-awesome.min.css';
 import MyPosts from './mypost.jsx'
 //import { Button, Image, Grid, Icon } from 'semantic-ui-react'
@@ -50,12 +51,14 @@ class Userfile extends Component {
     }
     componentDidMount() {
         //  console.log(this.props);
-        var uu = this.props.match.url.split('/');
-        this.state.user.userID = uu[2];
 
-        axios.get('http://localhost:4000/api/users/' + uu[2])
+        var username = Authentication.getUsername();
+
+
+
+        axios.get('http://localhost:4000/api/users/username/' + username)
             .then((response) => {
-                //   console.log(response);
+                console.log(response);
                 //  const user = update(this.state.user, { username: { $set: response.data.data.UserName } });
                 // user = update(this.state.user, { email: { $set: response.data.data.Email } });
 
@@ -66,15 +69,18 @@ class Userfile extends Component {
                 //console.log(response.data.data.UserName); // further value
 
                 // this.state.user.username = response.data.data.UserName;
+                console.log(response.data.data);
+                console.log(response.data.data[0].Email);
                 let tmp = this.state;
-                tmp.user.email = response.data.data.Email;
-                tmp.user.username = response.data.data.UserName;
-                tmp.user.MyCars = response.data.data.MyCars;
-                tmp.user.LikedCars = response.data.data.LikedCars;
-                tmp.user.RentedCars = response.data.data.RentedCars;
-                tmp.user.posts = response.data.data.MyPosts;
-                tmp.user.password = response.data.data.password;
-                tmp.user.renderList = response.data.data.MyPosts;
+
+                tmp.user.email = response.data.data[0].Email;
+                tmp.user.username = response.data.data[0].UserName;
+                tmp.user.MyCars = response.data.data[0].MyCars ;
+                tmp.user.LikedCars = response.data.data[0].LikedCars;
+                tmp.user.RentedCars = response.data.data[0].RentedCars;
+                tmp.user.posts = response.data.data[0].MyPosts ;
+                tmp.user.password = response.data.data[0].password;
+
                 this.setState(tmp);
                 // console.log(this.state.user.LikedCars)
                 // console.log(this.state.user.username);
@@ -244,6 +250,7 @@ class Userfile extends Component {
     render() {
 
         console.log("render")
+        console.log(this.state.user.MyCars);
         var postinfo = this.state.postinfo;
         var likedcarsinfo = this.state.likedcarsinfo;
         var rentedcarsinfo = this.state.rentedcarsinfo;
@@ -469,6 +476,7 @@ class Userfile extends Component {
             return (
 
                 < div >
+                    <NavBar />
                     <div class="container">
                         <div class="innerwrap">
                             <section class="section1 clearfix">
@@ -483,6 +491,7 @@ class Userfile extends Component {
                                         <div class="col2 last">
                                             <div class="grid clearfix">
                                                 <div class="col3 first">
+
                                                     <h1>{this.state.user.posts.length}</h1>
                                                     <span>My Posts</span>
                                                 </div>

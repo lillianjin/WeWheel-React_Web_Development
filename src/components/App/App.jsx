@@ -20,7 +20,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route exact path="/rent" component={RentCar} />
-            <Route path="/user/:userId" component={Userfile} />
+            <Route path="/profile" component={Userfile} />
           </Switch>
         </Router>
       </div>
