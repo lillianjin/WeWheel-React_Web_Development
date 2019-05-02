@@ -1,0 +1,44 @@
+body > div,
+body > div > div,
+body > div > div > div,
+body > div > div > div > div.Register {
+  height: 100%;
+}
+
+.addpostBox{
+
+  display: block;
+  overflow: auto;
+  position: absolute;
+  height:65vh;
+  width: 35vw;
+  left:50%;
+  top:55%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  padding:3% 5%;
+  border-radius: 20px;
+
+}
+.addcarBackgroundimg{
+  position: fixed;
+  width: 100vw;
+  height: auto;
+  opacity: 0.8;
+}
+.post-block{
+  width: 20vw;
+  position: relative;
+}
+
+// .center{
+//         text-align: center;
+// }
+// // label {
+// //         display: inline-block;
+// //         width: 400px;
+// //         text-align: left;
+// // }
+// // input,textarea{
+// //         vertical-align: top;
+// // }
