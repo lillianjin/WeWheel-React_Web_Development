@@ -9,10 +9,10 @@ import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './Userfile.scss'
 import Authentication from '../Authentication/Authentication.js'
-import update from 'immutability-helper';
+
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { useAsync } from "react-async"
+
 
 //import 'font-awesome/css/font-awesome.min.css';
 import MyPosts from './mypost.jsx'
@@ -75,10 +75,10 @@ class Userfile extends Component {
 
                 tmp.user.email = response.data.data[0].Email;
                 tmp.user.username = response.data.data[0].UserName;
-                tmp.user.MyCars = response.data.data[0].MyCars ;
+                tmp.user.MyCars = response.data.data[0].MyCars;
                 tmp.user.LikedCars = response.data.data[0].LikedCars;
                 tmp.user.RentedCars = response.data.data[0].RentedCars;
-                tmp.user.posts = response.data.data[0].MyPosts ;
+                tmp.user.posts = response.data.data[0].MyPosts;
                 tmp.user.password = response.data.data[0].password;
 
                 this.setState(tmp);
@@ -105,7 +105,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.posts;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/post/' + idlist[i])
@@ -142,7 +150,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.MyCars;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
@@ -178,7 +194,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.LikedCars;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
@@ -216,7 +240,15 @@ class Userfile extends Component {
         var curdata = [];
         let idlist = this.state.user.RentedCars;
 
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
                 .then((response) => {
@@ -476,6 +508,7 @@ class Userfile extends Component {
             return (
 
                 < div >
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                     <NavBar />
                     <div class="container">
                         <div class="innerwrap">
@@ -510,10 +543,12 @@ class Userfile extends Component {
                                     <div class="row clearfix">
                                         <ul class="row2tab clearfix">
                                             <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts </li>
-                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-heart"></i> My Cars </li>
-                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-car"></i> My Likes </li>
-                                            <li id="b4" onClick={this.clickrentedcars}><i></i> Rented Cars</li>
-                                            <li id="b5"><i></i> Add your car</li>
+                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars </li>
+                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes </li>
+                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+
+                                            <a href="#/addcar"> <li id="b5"><i></i> Add your car</li></a>
+                                            < a href="#/addpost">   <li id="b5"><i></i> Share your car</li></a>
                                         </ul>
                                     </div>
 

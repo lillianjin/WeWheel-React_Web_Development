@@ -52,8 +52,8 @@ class AddCar extends Component {
           Vid: this.state.car.VID,
           UserName:this.state.car.username,
           Description:this.state.car.description,
-          Capacity: this.state.car.capacity
-          //Picture:this.state.car.picture
+          Capacity: this.state.car.capacity,
+          Picture:this.state.car.picture
         })
         .then((response) => {
           console.log("Add your car successfully")
