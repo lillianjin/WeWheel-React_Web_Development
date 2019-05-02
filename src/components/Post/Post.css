@@ -1,0 +1,60 @@
+.postinfo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.car-image-container {}
+
+.car-image {
+    display: block;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+    margin: 1em;
+    height: auto;
+    width: 30vw;
+}
+
+.car-detail-container {
+    margin: 1em;
+    width: 100%;
+}
+
+.car-model-text {
+    position: relative;
+    margin: 1em;
+}
+
+.car-price-text {
+    margin: 1em;
+}
+
+.car-description {
+    margin: 1em;
+}
+
+.table-container {
+    margin: 1em;
+}
+
+.car-detail-button-container {
+    margin: 1em;
+}
+
+.review-container {}
+
+.review-form-container {
+    margin: 1em;
+    width: 95%;
+}
+
+.rightinfo-container {
+    width: 30%;
+}
+
+.yellow-box {
+    width: 100%;
+    text-align: center;
+    background-color: #e5bd53;
+    font-size: 18px;
+    padding: 5%;
+}
