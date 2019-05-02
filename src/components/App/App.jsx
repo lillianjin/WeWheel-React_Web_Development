@@ -7,7 +7,10 @@ import Home from "../Home/Home.jsx";
 import Register from "../Register/Register.jsx";
 import Login from "../Login/Login.jsx";
 import RentCar from "../RentCar/RentCar.jsx";
-import Post from "../Post/Post.jsx";
+import Posts from "../Posts/Posts.jsx";
+import AddCar from "../AddCar/AddCar.jsx";
+import AddPost from "../AddPost/AddPost.jsx";
+import Userfile from "../Userfile/Userfile.jsx";
 
 class App extends Component {
   render() {
@@ -19,7 +22,9 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route exact path="/rent" component={RentCar} />
-            <Route exact path="/detail" component={Post} />
+            <Route exact path="/addcar" component={AddCar} />
+            <Route exact path="/addpost" component={AddPost} />
+            <Route path="/profile" component={Userfile} />
           </Switch>
         </Router>
       </div>

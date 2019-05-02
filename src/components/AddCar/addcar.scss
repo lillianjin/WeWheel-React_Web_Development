@@ -1,0 +1,61 @@
+body > div,
+body > div > div,
+body > div > div > div,
+body > div > div > div > div.Register {
+  height: 100%;
+}
+
+.addcarBox{
+  display: block;
+  overflow: auto;
+  position: absolute;
+  height:60vh;
+  width: 70vw;
+  left:50%;
+  top:55%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  padding:3% 5%;
+  border-radius: 20px;
+
+}
+.addcarBackgroundimg{
+  position: fixed;
+  width: 100vw;
+  height: auto;
+  opacity: 0.8;
+}
+.block{
+        width: 30vw;
+        position: relative;
+
+
+}
+.imageUpload{
+        width:30vw;
+        position: absolute;
+        left: 31vw;
+        top: 0;
+}
+#imageContents{
+        // height: auto;
+        // width: 10vw;
+        display: block;
+        position: absolute;
+        left: 80%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        //border: 5px solid red;
+
+}
+// .center{
+//         text-align: center;
+// }
+// // label {
+// //         display: inline-block;
+// //         width: 400px;
+// //         text-align: left;
+// // }
+// // input,textarea{
+// //         vertical-align: top;
+// // }
