@@ -9,10 +9,11 @@ body > div > div > div > div.Register {
   display: block;
   overflow: auto;
   position: absolute;
-  height:60vh;
+  height: auto;
+  max-height:80vh;
   width: 70vw;
   left:50%;
-  top:55%;
+  top:56%;
   transform: translate(-50%,-50%);
   background-color: white;
   padding:3% 5%;

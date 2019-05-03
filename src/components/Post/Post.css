@@ -4,8 +4,6 @@
     align-items: center;
 }
 
-.car-image-container {}
-
 .car-image {
     display: block;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
@@ -25,6 +23,10 @@
 }
 
 .car-price-text {
+    margin: 1em;
+}
+
+.car-date {
     margin: 1em;
 }
 
@@ -52,6 +54,7 @@
 }
 
 .yellow-box {
+    margin-top: 1em;
     width: 100%;
     text-align: center;
     background-color: #e5bd53;
