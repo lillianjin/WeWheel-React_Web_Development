@@ -18,7 +18,7 @@ class NavBar extends Component {
   onLogOut(){
     Authentication.logout();
     this.forceUpdate();
-    // this.props.history.push( '/',null);
+
   }
 
   render() {

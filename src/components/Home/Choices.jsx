@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Segment, Grid, Header } from 'semantic-ui-react'
 import './Home.css'
+import  Authentication  from '../Authentication/Authentication.js'
 
 class Choices extends Component {
 
@@ -24,6 +25,7 @@ class Choices extends Component {
                   Share a Car
                 </Header>
               </Link>
+
               <p style={{ fontSize: '2vw', marginLeft: '2vw', marginRight: '2vw', color: '#f0f5f9' }}>Have an idle car at home? You can add the information of your car on WeWheel to maximize the value of your car!</p>
             </Grid.Column>
           </Grid.Row>
