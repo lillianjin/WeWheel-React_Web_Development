@@ -170,7 +170,7 @@ class AddCar extends Component {
                               <div id="imageContents">
                               </div>
                               <p></p>
-                                <Button color = 'black' fluid size='large' type='submit'>Submit</Button>
+                                <Button color = 'black' size='large' type='submit'>Submit</Button>
                             </Form>
                     </div>
               </div>
