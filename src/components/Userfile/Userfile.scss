@@ -5,7 +5,11 @@ body>div>div>div>div.Register {
     height: 100%;
 }
 
+
+
+
 * {
+    //position: absolute;
     margin: 0vw;
     padding: 0vw;
 }
@@ -22,6 +26,7 @@ body>div>div>div>div.Register {
 
 .clearfix:before,
 .clearfix:after {
+    position: absolute;
     display: table;
     content: '';
     width: 100%;
@@ -33,6 +38,19 @@ body>div>div>div>div.Register {
 
 
 body {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    //height: 1600px;
+    /*
+    padding: 0;
+    background-image: url("../assets/backgroundimg.jpg");
+    background-size: cover;
+    //background-color:red;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-attachment: fixed;
+*/
     background: #E2e2e2;
     color: #333;
     font-weight: normal;
@@ -139,8 +157,8 @@ select:focus {
     top: 16vw;
     background: #6AAFEA;
     padding: 5vw;
-    font-size: 12px;
-    line-height: 1;
+    font-size: 2vw;
+    line-height: 1vw;
     border-radius: 2vw;
     color: #fff;
     cursor: pointer;
@@ -155,13 +173,11 @@ select:focus {
     font-size: 2vw;
 }
 
-.section1 .col2.last .col3 h1 {
-    color: #FB4C22;
-}
+
 
 .section1 .col2.last .col3 {
     text-align: center;
-    line-height: 30px;
+    line-height: 5vw;
     border-right: 1px solid #ccc;
 }
 
@@ -173,8 +189,8 @@ select:focus {
     list-style: none;
     float: left;
     width: 12.5vw;
-    padding: 1vw;
-    font-size: 2vw;
+    padding: 1.8vw;
+    font-size: 1.1vw;
     text-align: center;
     cursor: pointer;
     background: #f1f1f1;
@@ -225,37 +241,17 @@ select:focus {
     font-size: 2vw;
 }
 
-.smalltri {
-    border-right: 40px solid #6AAFEA;
-    height: 0;
-    width: 0;
-    border-left: 20px solid transparent;
-    border-top: 10px solid #6AAFEA;
-    border-bottom: 20px solid transparent;
-    padding: 0px;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
 
-.smalltri i {
-    position: absolute;
-    top: -5px;
-    right: -33px;
-    color: #fff;
-    border: 0px;
-    font-size: 12px;
-}
 
 section.section2 {
-    margin: 50px 0;
+    margin: 1vw 0;
 }
 
 .section2 .col3 {
     width: 30%;
-    margin-right: 60px;
+    margin-right: 60vw;
     background: #fff;
-    border-radius: 2px;
+    border-radius: 2vw;
 }
 
 .section2 .postcont img {
@@ -265,23 +261,23 @@ section.section2 {
 
 .section2 .profileinfo {
     text-align: center;
-    padding: 0 10px 30px;
+    padding: 0 10vw 30vw;
     color: #555;
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 14vw;
+    line-height: 25vw;
 }
 
 .section2 .profileinfo img {
     border-radius: 50%;
-    width: 80px;
-    padding: 2px;
+    width: 80vw;
+    padding: 2vw;
     border: 3px solid #6AAFEA;
-    margin-top: -48px;
-    margin-bottom: 18px;
+    margin-top: -48vw;
+    margin-bottom: 18vw;
 }
 
 .section2 .col3.center .profileinfo img {
-    border: 3px solid #FB4C22;
+    border: 3vw solid #FB4C22;
 
 }
 
@@ -290,7 +286,7 @@ section.section2 {
 }
 
 .section2 .profileinfo span {
-    margin-top: 15px;
+    margin-top: 15vw;
     display: block;
     text-align: left;
     color: #6AAFEA;
@@ -298,10 +294,10 @@ section.section2 {
 }
 
 .section2 .profileinfo span i {
-    margin-left: 10px;
+    margin-left: 10vw;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1300vw) {
     .innerwrap {
         width: 90%;
     }
@@ -319,7 +315,7 @@ section.section2 {
     }
 }
 
-@media only screen and (max-width: 1060px) {
+@media only screen and (max-width: 1060vw) {
     .section1 .col2 {
         width: 100%;
         border-right: 0 !important;
@@ -327,11 +323,11 @@ section.section2 {
     }
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 60vw) {
     .section2 .col3 {
         width: 100%;
         float: none !important;
-        margin-bottom: 10px;
+        margin-bottom: 5vw;
     }
 
     .row2tab li {
@@ -354,13 +350,13 @@ section.section2 {
     }
 
     .section1 .col2.last {
-        margin-top: 25px;
+        margin-top: 2vw;
     }
 }
 
 @media only screen and (max-width: 450px) {
     .container {
-        padding: 60px 5px 70px;
+        padding: 8vw 5vw 7vw;
     }
 
     .row2tab li {
@@ -369,11 +365,33 @@ section.section2 {
     }
 
     .section1 .col2.last .col3 span {
-        font-size: 10px;
+        font-size: 2vw;
     }
 
     .section1 .col2.last .col3 h1 {
-        font-size: 18px;
+        font-size: 2vw;
     }
 
+}
+
+.loginBackgroundimg_2 {
+    top: 8vw;
+    width: 100%;
+    height: 50vw;
+    z-index: -1;
+}
+
+.login-bg-filter_2 {
+    position: absolute;
+    top: 8vw;
+    height: 50vw;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: bold;
+    padding: 0;
+    text-align: center;
+    z-index: 0;
 }

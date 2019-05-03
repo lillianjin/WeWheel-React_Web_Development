@@ -37,6 +37,7 @@ class Userfile extends Component {
                 RentedCars: [],
                 posts: [],
                 renderList: []
+
             },
             postinfo: [],
             likedcarsinfo: [],
@@ -492,6 +493,7 @@ class Userfile extends Component {
                 </div>
             );
         });
+
         console.log(myposts);
         if (this.state.redirect) {
             return (
@@ -506,68 +508,75 @@ class Userfile extends Component {
             console.log("render once");
             console.log(myposts);
             return (
+                <div >
+                    <img className="loginBackgroundimg_2" src={background} />
+                    <div className="login-bg-filter_2" />
+                    < div >
 
-                < div >
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                    <NavBar />
-                    <div class="container">
-                        <div class="innerwrap">
-                            <section class="section1 clearfix">
-                                <div>
-                                    <div class="row grid clearfix">
-                                        <div class="col2 first">
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-                                            <h1>{this.state.user.username}</h1>
-                                            <p>{this.state.user.email}</p>
+                        <NavBar />
 
-                                        </div>
-                                        <div class="col2 last">
-                                            <div class="grid clearfix">
-                                                <div class="col3 first">
+                        <div class="container">
+                            <div class="innerwrap">
 
-                                                    <h1>{this.state.user.posts.length}</h1>
-                                                    <span>My Posts</span>
+                                <section class="section1 clearfix">
+                                    <div>
+                                        <div class="row grid clearfix">
+                                            <div class="col2 first">
+
+                                                <h1>{this.state.user.username}</h1>
+                                                <p>{this.state.user.email}</p>
+
+                                            </div>
+                                            <div class="col2 last">
+                                                <div class="grid clearfix">
+                                                    <div class="col3 first">
+
+                                                        <h1>{this.state.user.posts.length}</h1>
+                                                        <span>My Posts</span>
+                                                    </div>
+                                                    <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
+                                                        <span>My Cars</span></div>
+
+                                                    <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
+
+                                                        <span>Rented Cars</span></div>
+                                                    <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
+
+                                                        <span>My Likes</span></div>
                                                 </div>
-                                                <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
-                                                    <span>My Cars</span></div>
-
-                                                <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
-
-                                                    <span>Rented Cars</span></div>
-                                                <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
-
-                                                    <span>My Likes</span></div>
                                             </div>
                                         </div>
+                                        <div class="row clearfix">
+                                            <ul class="row2tab clearfix">
+                                                <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts</li>
+                                                <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars</li>
+                                                <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes</li>
+                                                <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+
+                                                <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
+                                                < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
+                                            </ul>
+                                        </div>
+
                                     </div>
-                                    <div class="row clearfix">
-                                        <ul class="row2tab clearfix">
-                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i>My posts</li>
-                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i>My Cars</li>
-                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i>My Likes</li>
-                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i>Rented Cars</li>
 
-                                            <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
-                                            < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </section>
-                            <section class="section2 clearfix">
-                                <Grid divided style={{ margin: "0", padding: '0' }}>
-                                    <Grid.Row style={{ margin: "0" }}>
-                                        {myposts}
-                                        {mycars}
-                                        {likedcars}
-                                        {rentedcars}
-                                    </Grid.Row>
-                                </Grid>
-                            </section>
+                                </section>
+                                <section class="section2 clearfix">
+                                    <Grid divided style={{ margin: "0", padding: '0' }}>
+                                        <Grid.Row style={{ margin: "0" }}>
+                                            {myposts}
+                                            {mycars}
+                                            {likedcars}
+                                            {rentedcars}
+                                        </Grid.Row>
+                                    </Grid>
+                                </section>
+                            </div>
                         </div>
-                    </div>
-                </div >
+                    </div >
+                </div>
             )
 
         }
