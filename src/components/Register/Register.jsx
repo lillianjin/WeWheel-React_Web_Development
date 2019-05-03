@@ -47,6 +47,7 @@ class Register extends Component {
           this.props.history.push( '/login',null)
         })
         .catch(function (error) {
+          alert("Register failed! Username/Email is duplicated!");
           console.log("Unable to resgister")
           console.log(error);
         });
@@ -101,15 +102,15 @@ class Register extends Component {
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Form.Field>
                                   <label>Email</label>
-                                  <input placeholder='Your Email(Use for retrieve your password)' onChange={this.onChangeEmail} required />
+                                  <input placeholder='Your Email' onChange={this.onChangeEmail} required />
                                 </Form.Field>
                                 <Form.Field>
                                   <label>Username</label>
-                                  <input placeholder='Your Username(Use for login)' onChange={this.onChangeUserName} required/>
+                                  <input placeholder='Your Username' onChange={this.onChangeUserName} required/>
                                 </Form.Field>
                                 <Form.Field>
                                   <label>Password</label>
-                                  <input placeholder='Password(at least 6 characters)' type = "password" onChange={this.onChangePassword} required/>
+                                  <input placeholder='Password' type = "password" onChange={this.onChangePassword} required/>
                                 </Form.Field>
                                 <Button color = 'black' fluid size='large' type='submit'>Sign Up</Button>
                             </Form>
