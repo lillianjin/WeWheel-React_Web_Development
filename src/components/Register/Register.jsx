@@ -8,6 +8,7 @@ import NavBar from '../NavBar/NavBar.jsx'
 import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import register from './register.scss'
+import Footer from '../Footer/Footer.jsx';
 
 
 class Register extends Component {
@@ -92,6 +93,7 @@ class Register extends Component {
               <div>
                     <NavBar isLoggedIn = {false}/>
                     <img className = "registerBackgroundimg" src = {background}/>
+                    <div className="register-bg-filter"/>
                     <div className = "registerBox">
                             <Header as='h2' textAlign='center' color = 'black'>
                             <Icon name = 'registered outline'/>Sign Up for WeWheel!
@@ -113,6 +115,7 @@ class Register extends Component {
                             </Form>
                             <Message> Already a member? <Link to="/login">Login in here</Link> </Message>
                     </div>
+                    <Footer />
               </div>
             )
         }
