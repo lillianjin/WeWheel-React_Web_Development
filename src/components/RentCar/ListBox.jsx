@@ -14,35 +14,32 @@ export class ListBox extends Component {
     console.log(cardinfo.length);
 
     const mycards = cardinfo.map((card, i) => {
-      console.log("hhaha");
       return (
         <div
           className="ui card"
           style={{
-            maxWidth: "90%",
-            minWidth: "90%",
-            height: "20vw",
-            left: "5%"
+            width: "100%",
+            height: "auto",
+            left: "0",
+            top: "0"
           }}
           key={"card" + i}
         >
-          <div className="content" style={{ padding: "0", height: "100%" }}>
-            <div className="ui items" style={{ height: "100%" }}>
-              <div className="item" style={{ height: "100%" }}>
+          <div className="content" style={{ width: "100%", padding: "0", backgroundColor: "#fdfdf6"}}>
+            <div className="ui items" >
+              <div className="item" style={{ padding: "1vw" }}>
                 <Image
                   src={card.Car.Picture}
                   style={{
-                    height: "18vw",
-                    width: "auto",
-                    maxWidth: "60%",
-                    top: "1vw",
-                    left: "1vw"
+                    height: "auto",
+                    width: "26vw",
+                    maxHeight: "18vw"
                   }}
                 />
-                <div className="content" style={{ padding: "1vw 2vw" }}>
+                <div className="content" style={{ marginLeft: "1vw" }}>
                   <div
                     className="header"
-                    style={{ margin: "0", fontSize: "2vw" }}
+                    style={{ margin: "0", fontSize: "2vw", paddingTop: "0.5vw", paddingBottom: "0.5vw" }}
                   >
                     {card.Car.Brand}
                   </div>
@@ -51,7 +48,7 @@ export class ListBox extends Component {
                     style={{
                       fontSize: "1.2vw",
                       textAlign: "left",
-                      paddingLeft: "3vw",
+                      paddingLeft: "1vw",
                       color: "#ff5959"
                     }}
                   >
@@ -66,7 +63,7 @@ export class ListBox extends Component {
                     style={{
                       fontSize: "1.2vw",
                       textAlign: "left",
-                      paddingLeft: "3vw"
+                      paddingLeft: "1vw"
                     }}
                   >
                     <div>
@@ -98,7 +95,7 @@ export class ListBox extends Component {
                       {card.Car.RentCount}
                     </div>
                   </div>
-                  <div className="extra" style={{ textAlign: "right" }}>
+                  <div className="extra" style={{ textAlign: "right", marginTop: "0" }}>
                     <Button
                       color="vk"
                       compact
