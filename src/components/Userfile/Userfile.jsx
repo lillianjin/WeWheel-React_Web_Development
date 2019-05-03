@@ -303,11 +303,15 @@ class Userfile extends Component {
         axios.delete('http://localhost:4000/api/post/' + card._id, { data: { UserName: username } })
             .then((response) => {
                 console.log(response);
-
-            })
-            .then(() => {
-                console.log("here")
-                this.forceUpdate();
+                console.log(this.state.postinfo)
+                for(var i = 0; i < this.state.postinfo.length; i++){
+                  if(response.data.data.CarId === this.state.postinfo[i].CarId){
+                    this.state.postinfo.splice(i,1);
+                    this.state.user.posts.splice(this.state.user.posts.indexOf(card._id),1)
+                    break;
+                  }
+                }
+                this.setState({Remainder:"Deletion Completed"});
             })
             .catch(function (error) {
                 // handle error
