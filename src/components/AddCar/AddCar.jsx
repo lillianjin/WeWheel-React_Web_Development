@@ -58,11 +58,14 @@ class AddCar extends Component {
         .then((response) => {
           console.log("Add your car successfully")
           console.log(response);
-          this.props.history.push( '/',null)
+          alert("Add Car Successfully!")
+          this.props.history.push( '/profile',null)
         })
         .catch(function (error) {
           console.log("Unable to Add")
           console.log(error);
+          alert("Faild to Add Car! Please Double Check")
+          this.props.history.push( '/addcar',null)
         });
       }
 

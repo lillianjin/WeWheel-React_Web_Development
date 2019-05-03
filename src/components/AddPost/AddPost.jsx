@@ -111,6 +111,7 @@ class AddPost extends Component {
         .catch(function (error) {
           console.log("Unable to Add")
           console.log(error);
+          alert("Failed to Sahre Your Car! Please double check!")
         });
       }
 
