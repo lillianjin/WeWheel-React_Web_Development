@@ -2,42 +2,43 @@ import React, { Component } from "react";
 import { Button, Icon, Rating } from "semantic-ui-react";
 
 class PostInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    const curPost = this.props.curPost;
+    console.log(curPost);
+
     return (
       <div className="postinfo-container">
         <div className="car-image-container">
           <img
             className="car-image"
-            src="https://cdn.motor1.com/images/mgl/9ANEb/s1/2019-bmw-3-series.jpg"
+            src={curPost.Car.Picture}
             alt="car image"
           />
         </div>
         <div className="car-detail-container">
           <div className="car-model-text">
-            <strong>BMW Series 3</strong>
+            <strong>{curPost.Car.Brand}</strong>
             <Rating
               icon="star"
-              defaultRating={3}
+              defaultRating={curPost.Car.Rating / curPost.Car.RentCount}
               maxRating={5}
               disabled
               style={{ position: "absolute", right: "1em" }}
             />
           </div>
           <div className="car-price-text">
-            <strong>$30 RENT / PER DAY</strong>
+            <strong>${curPost.PricePerDay} RENT / PER DAY</strong>
             <br />
-            <strong>$10 RENT / PER HOUR</strong>
+            <strong>${curPost.PricePerHour} RENT / PER HOUR</strong>
           </div>
           <hr />
-          <div className="car-description">
-            This is the sample description of the post. This is the sample
-            description of the post. This is the sample description of the post.
-            This is the sample description of the post.
+          <div className="car-date">
+            <strong>
+              {curPost.StartDate} - {curPost.EndDate}
+            </strong>
           </div>
+          <hr />
+          <div className="car-description">{curPost.Car.Description}</div>
           <hr />
           <div className="table-container">
             <table
@@ -47,15 +48,15 @@ class PostInfo extends Component {
               <thead>
                 <tr>
                   <td>
-                    <Icon name="yellow check square" />
+                    <Icon name="check square" color="yellow" />
                     <strong>Air Condition</strong>
                   </td>
                   <td>
-                    <Icon name="yellow check square" />
+                    <Icon name="check square" color="yellow" />
                     <strong>Diesel</strong>
                   </td>
                   <td>
-                    <Icon name="yellow check square" />
+                    <Icon name="check square" color="yellow" />
                     <strong>Auto</strong>
                   </td>
                 </tr>
