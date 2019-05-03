@@ -14,6 +14,7 @@ import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import Footer from '../Footer/Footer.jsx';
 import Postdetail from "../Post/Post.jsx";
+
 //import 'font-awesome/css/font-awesome.min.css';
 
 //import { Button, Image, Grid, Icon } from 'semantic-ui-react'
@@ -48,9 +49,16 @@ class Userfile extends Component {
 
         }
 
-
-
+        this.viewDetails = this.viewDetails.bind(this);
+        this.deletePost = this.deletePost.bind(this);
     }
+
+    handleGoBack = e => {
+        this.setState({
+            isDetail: !this.state.isDetail,
+            currtPost: ""
+        });
+    };
     componentDidMount() {
         //  console.log(this.props);
 
@@ -282,14 +290,50 @@ class Userfile extends Component {
         };
     }
 
-    viewDetails = (card) => {
-        console.log(card);
-        let lalal = this.state;
-        lalal.isDetail = true;
-        lalal.currtPost = card;
-        this.setState(lalal);
+    viewDetails(e, post) {
+        this.setState({
+            isDetail: !this.state.isDetail,
+            currtPost: post
+        });
+    }
+
+    deletePost(e, card, username) {
+        console.log(card._id)
+        console.log(username)
+        axios.delete('http://localhost:4000/api/post/' + card._id, { data: { UserName: username } })
+            .then((response) => {
+                console.log(response);
+
+            })
+            .then(() => {
+                console.log("here")
+                this.forceUpdate();
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
 
     }
+    deletemycars(e, card, username) {
+        console.log(card._id)
+        console.log(username)
+        axios.delete('http://localhost:4000/api/car/' + card._id, { data: { UserName: username } })
+            .then((response) => {
+                console.log(response);
+
+            })
+            .then(() => {
+                this.forceUpdate();
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+
+    }
+
+
     render() {
 
         console.log("render")
@@ -349,11 +393,18 @@ class Userfile extends Component {
                                     </div>
                                     <div className="extra" style={{ textAlign: "right" }}>
                                         <Button color='vk' compact basic
-                                            onClick={this.viewDetails(card)}
-
+                                            onClick={e => this.viewDetails(e, card)}
+                                            name={card}
                                         >
                                             <Icon name='plus square outline' />
                                             View more
+                                    </Button>
+                                        <Button color='vk' compact basic
+                                            onClick={e => this.deletePost(e, card, this.state.user.username)}
+                                            name={card}
+                                        >
+                                            <Icon name='plus square outline' />
+                                            Delete Post
                                     </Button>
 
                                     </div>
@@ -396,6 +447,7 @@ class Userfile extends Component {
                                             {card.RentCount}
                                         </div>
                                     </div>
+
 
                                 </div>
                             </div>
@@ -559,8 +611,8 @@ class Userfile extends Component {
             return (
                 <div>
                     <NavBar />
-                    <div className="rent">
-                        <Postdetail />
+                    <div >
+                        <Postdetail curPost={this.state.currtPost} handleGoBack={this.handleGoBack} />
                     </div>
                     <Footer />
                 </div>
