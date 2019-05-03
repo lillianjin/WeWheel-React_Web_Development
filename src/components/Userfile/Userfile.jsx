@@ -9,10 +9,9 @@ import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './Userfile.scss'
 import Authentication from '../Authentication/Authentication.js'
-import update from 'immutability-helper';
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { useAsync } from "react-async"
+
 
 //import 'font-awesome/css/font-awesome.min.css';
 import MyPosts from './mypost.jsx'

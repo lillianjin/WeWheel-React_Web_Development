@@ -44,7 +44,7 @@ class AddCar extends Component {
 
 
       onSubmit(event){
-        console.log(this.state)
+        console.log(this.state.car.picture)
         event.preventDefault();
 
         axios.post('http://localhost:4000/api/cars/createCar', {
@@ -52,8 +52,8 @@ class AddCar extends Component {
           Vid: this.state.car.VID,
           UserName:this.state.car.username,
           Description:this.state.car.description,
-          Capacity: this.state.car.capacity
-          //Picture:this.state.car.picture
+          Capacity: this.state.car.capacity,
+          Picture:this.state.car.picture
         })
         .then((response) => {
           console.log("Add your car successfully")
