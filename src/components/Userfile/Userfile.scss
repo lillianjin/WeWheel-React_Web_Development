@@ -119,7 +119,7 @@ select:focus {
 .section1 .col2.first {
     line-height: 2vw;
     position: relative;
-    border-right: 1px solid #a2a2a2;
+    border-right: 1vw solid #a2a2a2;
 }
 
 .section1 .col2.first h1 {
@@ -138,10 +138,10 @@ select:focus {
     right: 15vw;
     top: 16vw;
     background: #6AAFEA;
-    padding: 5vw 11px;
+    padding: 5vw;
     font-size: 12px;
     line-height: 1;
-    border-radius: 2px;
+    border-radius: 2vw;
     color: #fff;
     cursor: pointer;
 }
@@ -152,7 +152,7 @@ select:focus {
 
 .section1 .col2.last .col3 span {
     color: #a2a2a2;
-    font-size: 14px;
+    font-size: 2vw;
 }
 
 .section1 .col2.last .col3 h1 {
@@ -172,49 +172,49 @@ select:focus {
 .row2tab li {
     list-style: none;
     float: left;
-    width: 15vw;
-    padding: 15px;
-    font-size: 14px;
+    width: 12.5vw;
+    padding: 1vw;
+    font-size: 2vw;
     text-align: center;
     cursor: pointer;
     background: #f1f1f1;
     color: #555;
-    border-bottom: 2px solid #f1f1f1;
+    border-bottom: 1vw solid #f1f1f1;
     //border: 5px solid red;
 }
 
 #b1:active {
     // color: black;
-    border-bottom: 2px solid #6AAFEA;
-    border-radius: 0 0 2px 2px;
+    border-bottom: 1vw solid #6AAFEA;
+    border-radius: 0 0 1vw 1vw;
     color: #6AAFEA;
 }
 
 #b2:active {
     // color: black;
-    border-bottom: 2px solid #6AAFEA;
-    border-radius: 0 0 2px 2px;
+    border-bottom: 1vw solid #6AAFEA;
+    border-radius: 0 0 1vw 1vw;
     color: #6AAFEA;
 }
 
 #b3:active {
     // color: black;
-    border-bottom: 2px solid #6AAFEA;
-    border-radius: 0 0 2px 2px;
+    border-bottom: 1vw solid #6AAFEA;
+    border-radius: 0 0 1vw 1vw;
     color: #6AAFEA;
 }
 
 #b4:active {
     // color: black;
-    border-bottom: 2px solid #6AAFEA;
-    border-radius: 0 0 2px 2px;
+    border-bottom: 1vw solid #6AAFEA;
+    border-radius: 0 0 1vw 1vw;
     color: #6AAFEA;
 }
 
 #b5:active {
     // color: black;
-    border-bottom: 2px solid #6AAFEA;
-    border-radius: 0 0 2px 2px;
+    border-bottom: 1vw solid #6AAFEA;
+    border-radius: 0 0 1vw 1vw;
     color: #6AAFEA;
 }
 
@@ -222,7 +222,7 @@ select:focus {
 
 .row2tab li i {
     margin-right: 0px;
-    font-size: 14px;
+    font-size: 2vw;
 }
 
 .smalltri {
