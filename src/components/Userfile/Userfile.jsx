@@ -542,13 +542,13 @@ class Userfile extends Component {
                                     </div>
                                     <div class="row clearfix">
                                         <ul class="row2tab clearfix">
-                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts </li>
-                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars </li>
-                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes </li>
-                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i>My posts</li>
+                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i>My Cars</li>
+                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i>My Likes</li>
+                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i>Rented Cars</li>
 
-                                            <a href="#/addcar"> <li id="b5"><i></i> Add your car</li></a>
-                                            < a href="#/addpost">   <li id="b5"><i></i> Share your car</li></a>
+                                            <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
+                                            < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
                                         </ul>
                                     </div>
 
