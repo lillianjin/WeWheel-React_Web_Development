@@ -9,10 +9,10 @@ import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './Userfile.scss'
 import Authentication from '../Authentication/Authentication.js'
-import update from 'immutability-helper';
+
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { useAsync } from "react-async"
+
 
 //import 'font-awesome/css/font-awesome.min.css';
 import MyPosts from './mypost.jsx'
@@ -37,6 +37,7 @@ class Userfile extends Component {
                 RentedCars: [],
                 posts: [],
                 renderList: []
+
             },
             postinfo: [],
             likedcarsinfo: [],
@@ -75,10 +76,10 @@ class Userfile extends Component {
 
                 tmp.user.email = response.data.data[0].Email;
                 tmp.user.username = response.data.data[0].UserName;
-                tmp.user.MyCars = response.data.data[0].MyCars ;
+                tmp.user.MyCars = response.data.data[0].MyCars;
                 tmp.user.LikedCars = response.data.data[0].LikedCars;
                 tmp.user.RentedCars = response.data.data[0].RentedCars;
-                tmp.user.posts = response.data.data[0].MyPosts ;
+                tmp.user.posts = response.data.data[0].MyPosts;
                 tmp.user.password = response.data.data[0].password;
 
                 this.setState(tmp);
@@ -105,7 +106,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.posts;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/post/' + idlist[i])
@@ -142,7 +151,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.MyCars;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
@@ -178,7 +195,15 @@ class Userfile extends Component {
 
         var curdata = [];
         let idlist = this.state.user.LikedCars;
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
 
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
@@ -216,7 +241,15 @@ class Userfile extends Component {
         var curdata = [];
         let idlist = this.state.user.RentedCars;
 
+        if (idlist.length == 0) {
+            var tmp = this.state;
 
+            tmp.likedcarsinfo = [];
+            tmp.rentedcarsinfo = [];
+            tmp.mycarsinfo = [];
+            tmp.postinfo = [];
+            this.setState(tmp);
+        }
         for (var i = 0; i < idlist.length; i++) {
             axios.get('http://localhost:4000/api/car/' + idlist[i])
                 .then((response) => {
@@ -460,6 +493,7 @@ class Userfile extends Component {
                 </div>
             );
         });
+
         console.log(myposts);
         if (this.state.redirect) {
             return (
@@ -474,65 +508,69 @@ class Userfile extends Component {
             console.log("render once");
             console.log(myposts);
             return (
-
-                < div >
+                <div className="userFile">
                     <NavBar />
-                    <div class="container">
-                        <div class="innerwrap">
-                            <section class="section1 clearfix">
-                                <div>
-                                    <div class="row grid clearfix">
-                                        <div class="col2 first">
+                    <img className="loginBackgroundimg_2" src={background} />
+                    <div className="login-bg-filter_2" />
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                        <div class="usercontainer">
+                            <div class="innerwrap">
+                                <section class="section1 clearfix">
+                                    <div>
+                                        <div class="row grid clearfix">
+                                            <div class="col2 first">
 
-                                            <h1>{this.state.user.username}</h1>
-                                            <p>{this.state.user.email}</p>
+                                                <h1>{this.state.user.username}</h1>
+                                                <p>{this.state.user.email}</p>
 
-                                        </div>
-                                        <div class="col2 last">
-                                            <div class="grid clearfix">
-                                                <div class="col3 first">
+                                            </div>
+                                            <div class="col2 last">
+                                                <div class="grid clearfix">
+                                                    <div class="col3 first">
 
-                                                    <h1>{this.state.user.posts.length}</h1>
-                                                    <span>My Posts</span>
+                                                        <h1>{this.state.user.posts.length}</h1>
+                                                        <span>My Posts</span>
+                                                    </div>
+                                                    <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
+                                                        <span>My Cars</span></div>
+
+                                                    <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
+
+                                                        <span>Rented Cars</span></div>
+                                                    <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
+
+                                                        <span>My Likes</span></div>
                                                 </div>
-                                                <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
-                                                    <span>My Cars</span></div>
-
-                                                <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
-
-                                                    <span>Rented Cars</span></div>
-                                                <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
-
-                                                    <span>My Likes</span></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <ul class="row2tab clearfix">
-                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts </li>
-                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-heart"></i> My Cars </li>
-                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-car"></i> My Likes </li>
-                                            <li id="b4" onClick={this.clickrentedcars}><i></i> Rented Cars</li>
-                                            <li id="b5"><i></i> Add your car</li>
-                                        </ul>
+                                        <div class="row clearfix">
+                                            <ul class="row2tab clearfix">
+                                                <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts</li>
+                                                <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars</li>
+                                                <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes</li>
+                                                <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+
+                                                <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
+                                                < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
+                                            </ul>
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-                            </section>
-                            <section class="section2 clearfix">
-                                <Grid divided style={{ margin: "0", padding: '0' }}>
-                                    <Grid.Row style={{ margin: "0" }}>
-                                        {myposts}
-                                        {mycars}
-                                        {likedcars}
-                                        {rentedcars}
-                                    </Grid.Row>
-                                </Grid>
-                            </section>
+                                </section>
+                                <section class="section2 clearfix">
+                                    <Grid divided style={{ margin: "0", padding: '0' }}>
+                                        <Grid.Row style={{ margin: "0" }}>
+                                            {myposts}
+                                            {mycars}
+                                            {likedcars}
+                                            {rentedcars}
+                                        </Grid.Row>
+                                    </Grid>
+                                </section>
+                            </div>
                         </div>
-                    </div>
-                </div >
+                    </div >
             )
 
         }
