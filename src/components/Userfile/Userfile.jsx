@@ -488,18 +488,13 @@ class Userfile extends Component {
             console.log("render once");
             console.log(myposts);
             return (
-                <div >
+                <div className="userFile">
+                    <NavBar />
                     <img className="loginBackgroundimg_2" src={background} />
                     <div className="login-bg-filter_2" />
-                    < div >
-
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-
-                        <NavBar />
-
-                        <div class="container">
+                        <div class="usercontainer">
                             <div class="innerwrap">
-
                                 <section class="section1 clearfix">
                                     <div>
                                         <div class="row grid clearfix">
@@ -556,7 +551,6 @@ class Userfile extends Component {
                             </div>
                         </div>
                     </div >
-                </div>
             )
 
         }
