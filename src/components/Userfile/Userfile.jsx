@@ -9,7 +9,7 @@ import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './Userfile.scss'
 import Authentication from '../Authentication/Authentication.js'
-
+import Post from '../Post/Post.jsx'
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
@@ -280,6 +280,10 @@ class Userfile extends Component {
                 })
         };
     }
+
+    viewDetails = (card) => {
+        console.log(card);
+    }
     render() {
 
         console.log("render")
@@ -338,7 +342,7 @@ class Userfile extends Component {
                                     </div>
                                     <div className="extra" style={{ textAlign: "right" }}>
                                         <Button color='vk' compact basic
-                                            //   onClick={viewDetails}
+                                            onClick={this.viewDetails(card)}
                                             name={card}
                                         >
                                             <Icon name='plus square outline' />
@@ -384,15 +388,7 @@ class Userfile extends Component {
                                             {card.RentCount}
                                         </div>
                                     </div>
-                                    <div className="extra" style={{ textAlign: "right" }}>
-                                        <Button color='vk' compact basic
-                                            //   onClick={viewDetails}
-                                            name={card}
-                                        >
-                                            <Icon name='plus square outline' />
-                                            View more
-                                    </Button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -431,15 +427,7 @@ class Userfile extends Component {
                                             {card.RentCount}
                                         </div>
                                     </div>
-                                    <div className="extra" style={{ textAlign: "right" }}>
-                                        <Button color='vk' compact basic
-                                            //   onClick={viewDetails}
-                                            name={card}
-                                        >
-                                            <Icon name='plus square outline' />
-                                            View more
-                                    </Button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -477,15 +465,7 @@ class Userfile extends Component {
                                             {card.RentCount}
                                         </div>
                                     </div>
-                                    <div className="extra" style={{ textAlign: "right" }}>
-                                        <Button color='vk' compact basic
-                                            //   onClick={viewDetails}
-                                            name={card}
-                                        >
-                                            <Icon name='plus square outline' />
-                                            View more
-                                    </Button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
