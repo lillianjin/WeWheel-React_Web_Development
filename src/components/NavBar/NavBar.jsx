@@ -18,6 +18,7 @@ class NavBar extends Component {
   onLogOut(){
     Authentication.logout();
     this.forceUpdate();
+
   }
 
   render() {
@@ -49,7 +50,7 @@ class NavBar extends Component {
 
               { Authentication.isLoggedIn() &&
              <Nav.Item>
-               <Nav.Link onClick = {this.onLogOut}>
+               <Nav.Link onClick = {this.onLogOut} href="#/">
                  <FontAwesomeIcon className="icon" icon={faSignOutAlt} size="sm" />
                  {" LOGOUT"}
                </Nav.Link>

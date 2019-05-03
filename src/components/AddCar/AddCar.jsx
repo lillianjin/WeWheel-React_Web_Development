@@ -101,9 +101,9 @@ class AddCar extends Component {
         })
       }
 
-      onChangeCapacity(event,value){
+      onChangeCapacity(event,result){
         const car = this.state.car;
-        car.capacity = value.value;
+        car.capacity = result.value;
         this.setState({
           car
         })
