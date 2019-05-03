@@ -109,8 +109,6 @@ class Userfile extends Component {
 
 
 
-
-
     clickposts = () => {
 
         var curdata = [];
@@ -348,16 +346,14 @@ class Userfile extends Component {
         var mycarsinfo = this.state.mycarsinfo;
         console.log(postinfo);
         const myposts = postinfo.map((card, i) => {
-
-
             return (
-                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
-                    <div className="content" style={{ padding: '0', height: '100%', backgroundColor: "#fdfdf6" }}>
-                        <div className="ui items" style={{ height: '100%' }}>
-                            <div className="item" style={{ height: '100%' }}>
-                                <Image src={card.Car.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw', marginLeft: "2vw" }}>
-                                    <div className="header" style={{ paddingLeft: "3vw", margin: '0', fontSize: '2vw' }}>
+                <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mypost" + i}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                        <div className="ui items">
+                            <div className="item">
+                                <Image src={card.Car.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
+                                <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
                                         {card.Car.Brand}
                                     </div>
                                     <div className="meta" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw", color: "#ff5959" }}>
@@ -365,7 +361,7 @@ class Userfile extends Component {
                                             {card.StartDate.substring(0, 10)}
                                             &nbsp; to &nbsp;
                                             {card.EndDate.substring(0, 10)}
-                                        </span>
+                                        </span> 
                                     </div>
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
                                         <div>
@@ -381,11 +377,9 @@ class Userfile extends Component {
                                             <b>Price:&nbsp;</b>
                                             <Icon name="dollar sign" />
                                             <b>{card.PricePerHour}</b>&nbsp;Per Hour
-                                        <div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;|&nbsp;&nbsp;
                                             <Icon name="dollar sign" />
                                                 <b>{card.PricePerDay}</b>&nbsp;Per Day
-                                        </div>
                                         </div>
                                         <div className="ui">
                                             <b>Rating:&nbsp;</b>{card.Car.Rating}/5
@@ -395,7 +389,7 @@ class Userfile extends Component {
                                             {card.Car.RentCount}
                                         </div>
                                     </div>
-                                    <div className="extra" style={{ textAlign: "right" }}>
+                                    <div className="extra" style={{ textAlign: "right", paddingRight: "3vw" }}>
                                         <Button color='vk' compact basic
                                             onClick={e => this.viewDetails(e, card)}
                                             name={card}
@@ -422,15 +416,13 @@ class Userfile extends Component {
 
 
         const mycars = mycarsinfo.map((card, i) => {
-            console.log("lalala")
-            // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%', top: "0 vw" }} key={"card" + i}>
-                    <div className="content" style={{ padding: '0', height: '100%' }}>
-                        <div className="ui items" style={{ height: '100%' }}>
-                            <div className="item" style={{ height: '100%' }}>
-                                <Image src={card.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw', backgroundColor: "#fdfdf6" }}>
+                <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mycar" + i}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                        <div className="ui items">
+                            <div className="item">
+                                <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
+                                <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
                                     <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
                                         {card.Brand}
                                     </div>
@@ -464,9 +456,6 @@ class Userfile extends Component {
                                         </div>
 
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -476,74 +465,95 @@ class Userfile extends Component {
         });
 
         const likedcars = likedcarsinfo.map((card, i) => {
-            console.log("lalala")
-            // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
-                    <div className="content" style={{ padding: '0', height: '100%' }}>
-                        <div className="ui items" style={{ height: '100%' }}>
-                            <div className="item" style={{ height: '100%' }}>
-                                <Image src={card.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw' }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw' }}>
+                <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mylike" + i}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                        <div className="ui items">
+                            <div className="item">
+                                <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
+                                <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
+                                        <div>
+                                            <div className="ui">
+                                            <b>Vehicle No:&nbsp;</b>
+                                            {card.Vid}
+                                            </div>
+                                        </div>
+                                        
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
                                                 <Icon name="user outline" key={"capacity" + i} />)}
                                         </div>
 
-
                                         <div className="ui">
                                             <b>Rating:&nbsp;</b>{card.Rating}/5
-                                    </div>
+                                        </div>
+
                                         <div className="ui">
                                             <b>Rent Count:&nbsp;</b>
                                             {card.RentCount}
                                         </div>
-                                    </div>
 
+                                        <div className="ui">
+                                            <b>Car Description:&nbsp;</b> <br/>
+                                            {card.Description}
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             );
+
         });
         const rentedcars = rentedcarsinfo.map((card, i) => {
-            console.log("lalala")
-            // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
-                    <div className="content" style={{ padding: '0', height: '100%' }}>
-                        <div className="ui items" style={{ height: '100%' }}>
-                            <div className="item" style={{ height: '100%' }}>
-                                <Image src={card.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw' }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw' }}>
+                <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"myrented" + i}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                        <div className="ui items">
+                            <div className="item">
+                                <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
+                                <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
+                                        <div>
+                                            <div className="ui">
+                                            <b>Vehicle No:&nbsp;</b>
+                                            {card.Vid}
+                                            </div>
+                                        </div>
+                                        
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
                                                 <Icon name="user outline" key={"capacity" + i} />)}
                                         </div>
 
-
                                         <div className="ui">
                                             <b>Rating:&nbsp;</b>{card.Rating}/5
-                                    </div>
+                                        </div>
+
                                         <div className="ui">
                                             <b>Rent Count:&nbsp;</b>
                                             {card.RentCount}
                                         </div>
-                                    </div>
 
+                                        <div className="ui">
+                                            <b>Car Description:&nbsp;</b> <br/>
+                                            {card.Description}
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
