@@ -13,9 +13,9 @@ import Post from '../Post/Post.jsx'
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import Footer from '../Footer/Footer.jsx';
-
+import Postdetail from "../Post/Post.jsx";
 //import 'font-awesome/css/font-awesome.min.css';
-import MyPosts from './mypost.jsx'
+
 //import { Button, Image, Grid, Icon } from 'semantic-ui-react'
 
 import ReactDOM from "react-dom";
@@ -560,7 +560,7 @@ class Userfile extends Component {
                 <div>
                     <NavBar />
                     <div className="rent">
-
+                        <Postdetail />
                     </div>
                     <Footer />
                 </div>
