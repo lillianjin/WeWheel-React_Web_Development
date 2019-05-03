@@ -38,7 +38,9 @@ class AddPost extends Component {
                 email:'',
                 priceperday:'',
                 priceperhour:''
-            }
+            },
+            start:undefined,
+            end: undefined
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -90,6 +92,13 @@ class AddPost extends Component {
 
       onSubmit(event){
         console.log(this.state)
+        // let start = this.state.car.startdate;
+        // let end = this.state.car.enddate;
+        //
+        // if (Date.parse(start) > Date.parse(end)){
+        //     return ("Date does not matc")
+        // }
+
         event.preventDefault();
 
         axios.post('http://localhost:4000/api/posts/createPost', {
@@ -117,9 +126,10 @@ class AddPost extends Component {
 
       handleStartChange(date){
         const car = this.state.car;
-        car.startdate = date;
+        car.startdate = moment(date).format("YYYY-MM-DD");
         this.setState({
-          car
+          car,
+          start:date
         })
       }
 
@@ -127,7 +137,8 @@ class AddPost extends Component {
         const car = this.state.car;
         car.enddate = moment(date).format("YYYY-MM-DD");
         this.setState({
-          car
+          car,
+          end: date
         })
       }
       onChangeCar(event, res){
@@ -174,6 +185,9 @@ class AddPost extends Component {
 
 
       render() {
+
+        const start = this.state.start;
+        const end = this.state.end;
         if(!Authentication.isLoggedIn()){
             return(
               <Redirect to = {
@@ -208,6 +222,7 @@ class AddPost extends Component {
                                       // value={this.state.startDate}
                                       onDayChange={this.handleStartChange}
                                       dayPickerProps={{
+                                          disabledDays: {after: end},
                                           month: new Date(),
                                           showWeekNumbers: true,
                                           todayButton: 'Today',
@@ -225,6 +240,7 @@ class AddPost extends Component {
                                         // value={this.state.endDate}
                                         onDayChange={this.handleEndChange}
                                         dayPickerProps={{
+                                            disabledDays: { before: start},
                                             month: new Date(),
                                             showWeekNumbers: true,
                                             todayButton: 'Today',
