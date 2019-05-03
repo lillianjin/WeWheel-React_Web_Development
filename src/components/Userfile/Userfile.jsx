@@ -12,7 +12,7 @@ import Authentication from '../Authentication/Authentication.js'
 import Post from '../Post/Post.jsx'
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-
+import Footer from '../Footer/Footer.jsx';
 
 //import 'font-awesome/css/font-awesome.min.css';
 import MyPosts from './mypost.jsx'
@@ -42,8 +42,9 @@ class Userfile extends Component {
             postinfo: [],
             likedcarsinfo: [],
             rentedcarsinfo: [],
-            mycarsinfo: []
-
+            mycarsinfo: [],
+            isDetail: false,
+            currtPost: {}
 
         }
 
@@ -173,7 +174,7 @@ class Userfile extends Component {
                     curdata.push(response.data.data);
                 })
                 .then(() => {
-                    console.log(curdata.length);
+
                     if (curdata.length == idlist.length) {
                         var tmp = this.state;
                         tmp.mycarsinfo = curdata;
@@ -283,20 +284,26 @@ class Userfile extends Component {
 
     viewDetails = (card) => {
         console.log(card);
+        let lalal = this.state;
+        lalal.isDetail = true;
+        lalal.currtPost = card;
+        this.setState(lalal);
+
     }
     render() {
 
         console.log("render")
-        console.log(this.state.user.MyCars);
+        console.log(this.state.user.posts);
         var postinfo = this.state.postinfo;
         var likedcarsinfo = this.state.likedcarsinfo;
         var rentedcarsinfo = this.state.rentedcarsinfo;
         var mycarsinfo = this.state.mycarsinfo;
+        console.log(postinfo);
         const myposts = postinfo.map((card, i) => {
-            console.log("lalala")
-            // console.log(card);
+
+
             return (
-                <div className="ui card" style={{ maxWidth: '90%', minWidth: '90%', height: '20vw', left: '5%' }} key={"card" + i}>
+                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
                     <div className="content" style={{ padding: '0', height: '100%' }}>
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
@@ -343,11 +350,12 @@ class Userfile extends Component {
                                     <div className="extra" style={{ textAlign: "right" }}>
                                         <Button color='vk' compact basic
                                             onClick={this.viewDetails(card)}
-                                            name={card}
+
                                         >
                                             <Icon name='plus square outline' />
                                             View more
                                     </Button>
+
                                     </div>
                                 </div>
                             </div>
@@ -362,7 +370,7 @@ class Userfile extends Component {
             console.log("lalala")
             // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '90%', minWidth: '90%', height: '20vw', left: '5%' }} key={"card" + i}>
+                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%', top: "0 vw" }} key={"card" + i}>
                     <div className="content" style={{ padding: '0', height: '100%' }}>
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
@@ -401,7 +409,7 @@ class Userfile extends Component {
             console.log("lalala")
             // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '90%', minWidth: '90%', height: '20vw', left: '5%' }} key={"card" + i}>
+                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
                     <div className="content" style={{ padding: '0', height: '100%' }}>
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
@@ -439,7 +447,7 @@ class Userfile extends Component {
             console.log("lalala")
             // console.log(card);
             return (
-                <div className="ui card" style={{ maxWidth: '90%', minWidth: '90%', height: '20vw', left: '5%' }} key={"card" + i}>
+                <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
                     <div className="content" style={{ padding: '0', height: '100%' }}>
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
@@ -475,16 +483,8 @@ class Userfile extends Component {
         });
 
         console.log(myposts);
-        if (this.state.redirect) {
-            return (
-                <Redirect to={
-                    {
-                        pathname: '/',
-                        state: { isLoggedIn: false }
-                    }
-                } />
-            )
-        } else {
+        if (!this.state.isDetail) {
+
             console.log("render once");
             console.log(myposts);
             return (
@@ -492,67 +492,79 @@ class Userfile extends Component {
                     <NavBar />
                     <img className="loginBackgroundimg_2" src={background} />
                     <div className="login-bg-filter_2" />
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                        <div class="usercontainer">
-                            <div class="innerwrap">
-                                <section class="section1 clearfix">
-                                    <div>
-                                        <div class="row grid clearfix">
-                                            <div class="col2 first">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                    <div class="usercontainer">
+                        <div class="innerwrap">
+                            <section class="section1 clearfix" style={{ width: "100%", height: "40vw" }}>
+                                <div>
+                                    <div class="row grid clearfix">
+                                        <div class="col2 first">
 
-                                                <h1>{this.state.user.username}</h1>
-                                                <p>{this.state.user.email}</p>
+                                            <h1 >{this.state.user.username}</h1>
+                                            <p>{this.state.user.email}</p>
 
-                                            </div>
-                                            <div class="col2 last">
-                                                <div class="grid clearfix">
-                                                    <div class="col3 first">
+                                        </div>
+                                        <div class="col2 last">
+                                            <div class="grid clearfix">
+                                                <div class="col3 first">
 
-                                                        <h1>{this.state.user.posts.length}</h1>
-                                                        <span>My Posts</span>
-                                                    </div>
-                                                    <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
-                                                        <span>My Cars</span></div>
-
-                                                    <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
-
-                                                        <span>Rented Cars</span></div>
-                                                    <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
-
-                                                        <span>My Likes</span></div>
+                                                    <h1>{this.state.user.posts.length}</h1>
+                                                    <span>My Posts</span>
                                                 </div>
+                                                <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
+                                                    <span>My Cars</span></div>
+
+                                                <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
+
+                                                    <span>Rented Cars</span></div>
+                                                <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
+
+                                                    <span>My Likes</span></div>
                                             </div>
                                         </div>
-                                        <div class="row clearfix">
-                                            <ul class="row2tab clearfix">
-                                                <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts</li>
-                                                <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars</li>
-                                                <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes</li>
-                                                <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <ul class="row2tab clearfix">
+                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts</li>
+                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars</li>
+                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes</li>
+                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
 
-                                                <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
-                                                < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
-                                            </ul>
-                                        </div>
-
+                                            <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
+                                            < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
+                                        </ul>
                                     </div>
 
-                                </section>
-                                <section class="section2 clearfix">
-                                    <Grid divided style={{ margin: "0", padding: '0' }}>
-                                        <Grid.Row style={{ margin: "0" }}>
-                                            {myposts}
-                                            {mycars}
-                                            {likedcars}
-                                            {rentedcars}
-                                        </Grid.Row>
-                                    </Grid>
-                                </section>
-                            </div>
+                                </div>
+
+                            </section>
+                            <section class="section2 clearfix" style={{ overflow: 'auto', postion: "fixed" }}>
+                                <Grid divided style={{ margin: "0", padding: '0' }}>
+                                    <Grid.Row style={{ margin: "0" }}>
+                                        {myposts}
+                                        {mycars}
+                                        {likedcars}
+                                        {rentedcars}
+                                    </Grid.Row>
+                                </Grid>
+                            </section>
                         </div>
-                    </div >
+                    </div>
+                </div >
             )
 
+
+        }
+        else {
+            return (
+                <div>
+                    <NavBar />
+                    <div className="rent">
+
+                    </div>
+                    <Footer />
+                </div>
+            );
         }
 
     }

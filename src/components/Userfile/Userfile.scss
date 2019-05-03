@@ -83,6 +83,7 @@ select:focus {
 
 .grid .col2.first {
     float: left;
+    margin-left: 5vw;
 
 }
 
@@ -354,11 +355,13 @@ section.section2 {
     }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 50vw) {
 
     .usercontainer {
         position: absolute;
         padding: 8vw 5vw 7vw;
+        overflow: auto;
+        width: 100%;
     }
 
     .row2tab li {
@@ -378,19 +381,21 @@ section.section2 {
 
 .userFile {
     position: absolute;
+    width: 100%;
+
 }
 
 
 .loginBackgroundimg_2 {
-    position: absolute;
-    top: 8vw;
+    position: fixed;
+    top: 0vw;
     width: 100%;
     height: 50vw;
     z-index: -1;
 }
 
 .login-bg-filter_2 {
-    position: absolute;
+    position: fixed;
     top: 8vw;
     height: 50vw;
     width: 100%;
