@@ -16,8 +16,8 @@ const options = [
   { key: 'C', text: 'Champaign', value: 'Champaign' },
   { key: 'U', text: 'Urbana', value: 'Urbana' },
   { key: 'S', text: 'Savoy', value: 'Savoy' },
-  { key: 'sp', text: 'Springfield', value: 'Springfield'},
-  { key: 'mo', text: 'Monticello', value: 'Monticello'}
+  { key: 'bd', text: 'Bondville', value: 'Bondville'},
+  { key: 'mr', text: 'Mira', value: 'Mira'}
 ]
 
 class AddPost extends Component {
