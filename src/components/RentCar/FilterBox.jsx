@@ -42,6 +42,8 @@ class FilterBox extends Component {
             { key: 'ch', text: 'Champaign', value: 'Champaign' },
             { key: 'sa', text: 'Savoy', value: 'Savoy' },
             { key: 'ur', text: 'Urbana', value: 'Urbana' },
+            { key: 'bv', text: 'Bondville', value: 'Bondville'  },
+            { key: 'mi', text: 'Mira', value: 'Mira'  },
         ];
         const seatsOptions = [
             { key: 'all', text: 'All', value: '*' },

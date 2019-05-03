@@ -348,12 +348,12 @@ class Userfile extends Component {
 
             return (
                 <div className="ui card" style={{ maxWidth: '100%', minWidth: '100%', height: '20vw', left: '0%' }} key={"card" + i}>
-                    <div className="content" style={{ padding: '0', height: '100%' }}>
+                    <div className="content" style={{ padding: '0', height: '100%', backgroundColor: "#fdfdf6" }}>
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
                                 <Image src={card.Car.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw' }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw' }}>
+                                <div className="content" style={{ padding: '1vw 2vw', marginLeft: "2vw" }}>
+                                    <div className="header" style={{ paddingLeft: "3vw", margin: '0', fontSize: '2vw' }}>
                                         {card.Car.Brand}
                                     </div>
                                     <div className="meta" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw", color: "#ff5959" }}>
@@ -426,27 +426,41 @@ class Userfile extends Component {
                         <div className="ui items" style={{ height: '100%' }}>
                             <div className="item" style={{ height: '100%' }}>
                                 <Image src={card.Picture} style={{ height: "18vw", width: "auto", maxWidth: "60%", top: '1vw', left: '1vw' }} />
-                                <div className="content" style={{ padding: '1vw 2vw' }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw' }}>
+                                <div className="content" style={{ padding: '1vw 2vw', backgroundColor: "#fdfdf6" }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
+                                        <div>
+                                            <div className="ui">
+                                            <b>Vehicle No:&nbsp;</b>
+                                            {card.Vid}
+                                            </div>
+                                        </div>
+                                        
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
                                                 <Icon name="user outline" key={"capacity" + i} />)}
                                         </div>
 
-
                                         <div className="ui">
                                             <b>Rating:&nbsp;</b>{card.Rating}/5
-                                    </div>
+                                        </div>
+
                                         <div className="ui">
                                             <b>Rent Count:&nbsp;</b>
                                             {card.RentCount}
                                         </div>
+
+                                        <div className="ui">
+                                            <b>Car Description:&nbsp;</b> <br/>
+                                            {card.Description}
+                                        </div>
+
                                     </div>
+
 
 
                                 </div>
@@ -547,50 +561,50 @@ class Userfile extends Component {
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                     <div class="usercontainer">
                         <div class="innerwrap">
-                            <section class="section1 clearfix" style={{ width: "100%", height: "40vw" }}>
-                                <div>
-                                    <div class="row grid clearfix">
-                                        <div class="col2 first">
+                            <section class="section1 clearfix" style={{ width: "100%", height: "auto", top: "1vw", paddingBottom: "2vw", backgroundColor: "#fdfdf6"}}>
+                                <div style={{height: "100%"}}>
+                                    <div class="row grid clearfix" style={{width:"100%", paddingBottom: "2vw", margin:"0"}}>
+                                        <div class="col2 first" style={{width:"100%"}}>
 
-                                            <h1 >{this.state.user.username}</h1>
-                                            <p>{this.state.user.email}</p>
+                                            <h1 style={{display: "inline-block", fontFamily: "Optima, sans-serif", color: "#053f5e", fontSize: "3.5vw", fontWeight: "bold", marginTop:"2vw", marginBottom: "1vw"}}>Welcome Back,</h1>
+                                            <h1 style={{display: "inline-block", position: "relative", marginLeft: "1vw", color: "#69779b" , fontFamily: "Optima, cursive", fontSize: "2.5vw",marginTop:"2vw", marginBottom: "1vw"}}>{this.state.user.username}</h1>
 
                                         </div>
-                                        <div class="col2 last">
+                                        <div class="col2 last" style={{marginTop: "2vw", width: "100%"}}>
                                             <div class="grid clearfix">
-                                                <div class="col3 first">
+                                                <div class="col3 first" style={{marginRight: "0", width: "25%"}}>
 
-                                                    <h1>{this.state.user.posts.length}</h1>
-                                                    <span>My Posts</span>
+                                                    <h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.posts.length}</h1>
+                                                    <span style={{color: "#053f5e"}}>My Posts</span>
                                                 </div>
-                                                <div class="col3"><h1>{this.state.user.MyCars.length}</h1>
-                                                    <span>My Cars</span></div>
+                                                <div class="col3" style={{marginRight: "0", width: "25%"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.MyCars.length}</h1>
+                                                    <span style={{color: "#053f5e"}}>My Cars</span></div>
 
-                                                <div class="col3 last"><h1>{this.state.user.RentedCars.length}</h1>
+                                                <div class="col3" style={{marginRight: "0", width: "25%"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.RentedCars.length}</h1>
 
-                                                    <span>Rented Cars</span></div>
-                                                <div class="col3 lastlast"><h1>{this.state.user.LikedCars.length}</h1>
+                                                    <span style={{color: "#053f5e"}}>Rented Cars</span></div>
+                                                <div class="col3" style={{marginRight: "0", width: "25%", borderRight: "none"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.LikedCars.length}</h1>
 
-                                                    <span>My Likes</span></div>
+                                                    <span style={{color: "#053f5e"}}>My Likes</span></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <ul class="row2tab clearfix">
-                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My posts</li>
-                                            <li id="b2" onClick={this.clickmycars}><i class="fa fa-car"></i> My Cars</li>
-                                            <li id="b3" onClick={this.clickmylikes}><i class="fa fa-heart"></i> My Likes</li>
-                                            <li id="b4" onClick={this.clickrentedcars}><i class="fa fa-car"></i> Rented Cars</li>
+                                    <div class="row clearfix" style={{ width: "100%", paddingLeft: "2vw", paddingRight: "2vw", margin: "0"}}>
+                                        <ul class="row2tab clearfix" style={{width: "100%"}}>
+                                            <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My Posts</li>
+                                            <li id="b2" onClick={this.clickmycars} ><i class="fa fa-car"></i> My Cars</li>
+                                            <li id="b3" onClick={this.clickmylikes} ><i class="fa fa-heart"></i> My Likes</li>
+                                            <li id="b4" onClick={this.clickrentedcars} ><i class="fa fa-car"></i> Rented Cars</li>
 
-                                            <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add car</li></a>
-                                            < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Share car</li></a>
+                                            <a href="#/addcar"> <li id="b5" ><i class="fa fa-plus"></i> Add Car</li></a>
+                                            < a href="#/addpost"><li id="b5"><i class="fa fa-bullhorn"></i> Add Post</li></a>
                                         </ul>
                                     </div>
 
                                 </div>
 
                             </section>
-                            <section class="section2 clearfix" style={{ overflow: 'auto', postion: "fixed" }}>
+                            <section class="section2 clearfix" style={{ overflow: 'auto', postion: "fixed"}}>
                                 <Grid divided style={{ margin: "0", padding: '0' }}>
                                     <Grid.Row style={{ margin: "0" }}>
                                         {myposts}
@@ -602,6 +616,7 @@ class Userfile extends Component {
                             </section>
                         </div>
                     </div>
+                    <Footer />
                 </div >
             )
 

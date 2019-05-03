@@ -10,6 +10,8 @@ const locations = [
     { key: 'ch', name: 'Champaign', lat: '40.116329', lng: '-88.243523' },
     { key: 'sa', name: 'Savoy', lat: '40.069031', lng: '-88.253433' },
     { key: 'ur', name: 'Urbana', lat: '40.112461', lng: '-88.207458'  },
+    { key: 'bv', name: 'Bondville', lat: '40.113205', lng: '-88.369507'  },
+    { key: 'mi', name: 'Mira', lat: '40.083921', lng: '-88.162267'  },
 ];
 
 export class MapBox extends Component {
