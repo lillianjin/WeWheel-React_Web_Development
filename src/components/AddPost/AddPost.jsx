@@ -15,7 +15,9 @@ import moment from 'moment';
 const options = [
   { key: 'C', text: 'Champaign', value: 'Champaign' },
   { key: 'U', text: 'Urbana', value: 'Urbana' },
-  { key: 'S', text: 'Savoy', value: 'Savoy' }
+  { key: 'S', text: 'Savoy', value: 'Savoy' },
+  { key: 'sp', text: 'Springfield', value: 'Springfield'},
+  { key: 'mo', text: 'Monticello', value: 'Monticello'}
 ]
 
 class AddPost extends Component {
@@ -23,13 +25,15 @@ class AddPost extends Component {
         super(props);
 
         this.state ={
+            carlist:[],
             car:{
+                id:'',
                 startdate:'',
                 enddate:'',
                 pickuplocation:'',
                 brand:'',
                 capacity:'',
-                VID:'',
+                vid:'',
                 username:Authentication.getUsername(),
                 email:'',
                 priceperday:'',
@@ -38,11 +42,49 @@ class AddPost extends Component {
         }
 
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChangeCapacity = this.onChangeCapacity.bind(this);
+        this.onChangeLocation = this.onChangeLocation.bind(this);
         this.handleStartChange = this.handleStartChange.bind(this)
         this.handleEndChange = this.handleEndChange.bind(this)
         this.onChangePricePerHour = this.onChangePricePerHour.bind(this)
         this.onChangePricePerDay = this.onChangePricePerDay.bind(this)
+        this.onChangeCar = this.onChangeCar.bind(this)
+
+      }
+
+      componentDidMount(){
+        var username = Authentication.getUsername();
+        axios.get('http://localhost:4000/api/users/username/' + username)
+            .then((response) => {
+                console.log(response.data.data);
+                console.log(this.state);
+                let tmp = this.state;
+                window.carchoice = []
+                tmp.carlist = response.data.data[0].MyCars;
+                tmp.car.email = response.data.data[0].Email;
+                this.setState(tmp);
+
+                for (var i = 0; i < tmp.carlist.length; i++){
+                  axios.get('http://localhost:4000/api/car/'+ tmp.carlist[i])
+                    .then((response) => {
+                       var tempdata = response.data.data;
+                       window.carchoice.push({
+                         text: tempdata.Brand + " " + tempdata.Vid,
+                         value: tempdata,
+                       })
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    });
+                }
+                console.log(window.carchoice)
+
+              })
+              .catch(function (error) {
+                  // handle error
+                  console.log(error);
+              });
+
 
       }
 
@@ -51,8 +93,10 @@ class AddPost extends Component {
         event.preventDefault();
 
         axios.post('http://localhost:4000/api/posts/createPost', {
-          UserId:this.state.car.username,
-          Capacity: this.state.car.capacity,
+          CarId:this.state.car.id,
+          Capacity:parseInt(this.state.car.capacity),
+          Location: this.state.car.pickuplocation,
+          UserName:this.state.car.username,
           StartDate:this.state.car.startdate,
           EndDate:this.state.car.enddate,
           PricePerDay:this.state.car.priceperday,
@@ -62,7 +106,7 @@ class AddPost extends Component {
         .then((response) => {
           console.log("Add your car successfully")
           console.log(response);
-          this.props.history.push( '/',null)
+          this.props.history.push( '/profile',null)
         })
         .catch(function (error) {
           console.log("Unable to Add")
@@ -85,10 +129,27 @@ class AddPost extends Component {
           car
         })
       }
-
-      onChangeCapacity(event,value){
+      onChangeCar(event, res){
         const car = this.state.car;
-        car.capacity = value.value;
+        console.log(event);
+        console.log(res);
+        car.vid = res.value.Vid;
+        car.brand = res.value.Brand;
+        car.id = res.value._id;
+        car.capacity = res.value.Capacity;
+        console.log(car)
+        this.setState({
+          car
+        })
+
+      }
+
+      onChangeLocation(event,res){
+        const car = this.state.car;
+        console.log(event);
+        console.log(res);
+        car.pickuplocation = res.value;
+        console.log(car);
         this.setState({
           car
         })
@@ -131,6 +192,12 @@ class AddPost extends Component {
                             <Icon name = 'car'/>Share Your Car!
                             </Header>
                             <Form size='large' onSubmit={this.onSubmit}>
+                            <div className = "post-block">
+                              <Form.Field >
+                                  <label>Car: </label>
+                                  <Form.Select options={window.carchoice}  placeholder='Choose your car' onChange={this.onChangeCar} required />
+                              </Form.Field >
+                            </div>
                               <div className = "post-block">
                                 <Form.Field>
                                   <label>Pickup Date: </label>
@@ -168,7 +235,7 @@ class AddPost extends Component {
                               <div className = "post-block">
                                 <Form.Field >
                                     <label>Pickup Location: </label>
-                                    <Form.Select options={options}  placeholder='Where to pick up' onChange={this.onChangeCapacity} required />
+                                    <Form.Select options={options}  placeholder='Where to pick up' onChange={this.onChangeLocation} required />
                                 </Form.Field >
                               </div>
                               <div className = "post-block">

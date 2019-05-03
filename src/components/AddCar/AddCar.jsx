@@ -44,7 +44,7 @@ class AddCar extends Component {
 
 
       onSubmit(event){
-        console.log(this.state)
+        console.log(this.state.car.picture)
         event.preventDefault();
 
         axios.post('http://localhost:4000/api/cars/createCar', {
@@ -101,9 +101,9 @@ class AddCar extends Component {
         })
       }
 
-      onChangeCapacity(event,value){
+      onChangeCapacity(event,result){
         const car = this.state.car;
-        car.capacity = value.value;
+        car.capacity = result.value;
         this.setState({
           car
         })
@@ -170,7 +170,7 @@ class AddCar extends Component {
                               <div id="imageContents">
                               </div>
                               <p></p>
-                                <Button color = 'black' fluid size='large' type='submit'>Submit</Button>
+                                <Button color = 'black' size='large' type='submit'>Submit</Button>
                             </Form>
                     </div>
               </div>
