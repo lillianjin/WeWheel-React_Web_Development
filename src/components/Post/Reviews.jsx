@@ -1,33 +1,63 @@
 import React, { Component } from "react";
 import { TextArea, Form, Button, Rating } from "semantic-ui-react";
+import Axios from "axios";
+import Authentication from "../Authentication/Authentication";
 
 class Reviews extends Component {
   constructor(props) {
     super(props);
     this.state = {
       reviewContent: "",
-      reviewList: [
-        "this is 1st review content, this is review content, this is review\
-      content, this is review content, this is review content, this is\
-      review content, this is review content.",
-        "this is 2nd review content, this is review content, this is review\
-      content, this is review content, this is review content, this is\
-      review content, this is review content."
-      ]
+      reviewList: []
     };
   }
+
+  componentDidMount() {
+    this.retrieveReviews();
+  }
+
+  retrieveReviews = () => {
+    Axios.get(
+      `http://localhost:4000/api/comments?where={"CarId": "${
+        this.props.carId
+      }"}`
+    ).then(res => {
+      let reviewList = [];
+      res.data.data.map(reviewObject => {
+        reviewList.push(reviewObject.Content);
+      });
+      this.setState({ reviewList: reviewList });
+    });
+  };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleRating = (e, { rating }) => {
-    console.log(rating);
+    console.log("rating: " + rating);
+    const ratingObject = {
+      Content: rating,
+      CarId: this.props.carId,
+      UserId: Authentication.getUserId()
+    };
+    Axios.post("http://localhost:4000/api/rates/createRate", ratingObject);
   };
 
   handleSubmit = e => {
-    let reviewContent = this.state.reviewContent;
-    console.log(reviewContent);
+    const reviewContent = this.state.reviewContent;
+    console.log("submit: " + reviewContent);
+    // submit review
+    const reviewObject = {
+      Content: reviewContent,
+      CarId: this.props.carId,
+      UserId: Authentication.getUserId()
+    };
+    Axios.post(
+      "http://localhost:4000/api/comments/createComment",
+      reviewObject
+    );
+    // append current review to reviewList
     let reviewList = this.state.reviewList.slice();
     reviewList.push(reviewContent);
     this.setState({ reviewContent: "", reviewList: reviewList });
@@ -38,6 +68,8 @@ class Reviews extends Component {
   };
 
   render() {
+    const { reviewList } = this.state;
+
     return (
       <div className="review-container">
         <table
@@ -50,8 +82,8 @@ class Reviews extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.reviewList.map(review => (
-              <tr>
+            {reviewList.map((review, i) => (
+              <tr key={i}>
                 <td>{review}</td>
               </tr>
             ))}
@@ -76,12 +108,12 @@ class Reviews extends Component {
             <div style={{ margin: "1em auto" }}>
               <Button
                 onClick={this.handleSubmit}
-                color="blue"
+                color="black"
                 style={{ marginRight: "1em" }}
               >
                 Submit
               </Button>
-              <Button color="blue" onClick={this.handleClear}>
+              <Button color="black" onClick={this.handleClear}>
                 Clear
               </Button>
             </div>

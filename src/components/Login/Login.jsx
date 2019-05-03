@@ -8,6 +8,7 @@ import NavBar from '../NavBar/NavBar.jsx'
 import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import login from './login.scss'
+import Footer from '../Footer/Footer.jsx';
 import Authentication from '../Authentication/Authentication.js'
 
 
@@ -48,7 +49,8 @@ class Login extends Component {
           this.props.history.push( '/',null)
         })
         .catch((error) => {
-          console.log("Unable to login")
+          alert("Wrong Password!");
+          console.log("Unable to login");
           console.log(error);
         });
 
@@ -87,6 +89,7 @@ class Login extends Component {
         <div>
           <NavBar isLoggedIn={false} />
           <img className="loginBackgroundimg" src={background} />
+          <div className="login-bg-filter" />
           <div className="logInBox">
             <Header as='h2' textAlign='center' color='black'>
               <Icon name='sign in' />Login Your Account!
@@ -103,9 +106,11 @@ class Login extends Component {
               <Button color='black' fluid size='large' type='submit'>Log in</Button>
             </Form>
             <Message> Don't have an account? <Link to="/register">Sign up now!</Link> </Message>
-            <Message> Forget your password? <Link to="/register">Reset here!</Link> </Message>
+            {/* <Message> Forget your password? <Link to="/register">Reset here!</Link> </Message> */}
           </div>
+          <Footer />
         </div>
+
       )
     }
 

@@ -8,6 +8,7 @@ import NavBar from '../NavBar/NavBar.jsx'
 import Home from '../Home/Home.jsx'
 import Choices from '../Home/Choices.jsx'
 import register from './register.scss'
+import Footer from '../Footer/Footer.jsx';
 
 
 class Register extends Component {
@@ -46,6 +47,7 @@ class Register extends Component {
           this.props.history.push( '/login',null)
         })
         .catch(function (error) {
+          alert("Register failed! Username/Email is duplicated!");
           console.log("Unable to resgister")
           console.log(error);
         });
@@ -92,6 +94,7 @@ class Register extends Component {
               <div>
                     <NavBar isLoggedIn = {false}/>
                     <img className = "registerBackgroundimg" src = {background}/>
+                    <div className="register-bg-filter"/>
                     <div className = "registerBox">
                             <Header as='h2' textAlign='center' color = 'black'>
                             <Icon name = 'registered outline'/>Sign Up for WeWheel!
@@ -99,20 +102,21 @@ class Register extends Component {
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Form.Field>
                                   <label>Email</label>
-                                  <input placeholder='Your Email(Use for retrieve your password)' onChange={this.onChangeEmail} required />
+                                  <input placeholder='Your Email' onChange={this.onChangeEmail} required />
                                 </Form.Field>
                                 <Form.Field>
                                   <label>Username</label>
-                                  <input placeholder='Your Username(Use for login)' onChange={this.onChangeUserName} required/>
+                                  <input placeholder='Your Username' onChange={this.onChangeUserName} required/>
                                 </Form.Field>
                                 <Form.Field>
                                   <label>Password</label>
-                                  <input placeholder='Password(at least 6 characters)' type = "password" onChange={this.onChangePassword} required/>
+                                  <input placeholder='Password' type = "password" onChange={this.onChangePassword} required/>
                                 </Form.Field>
                                 <Button color = 'black' fluid size='large' type='submit'>Sign Up</Button>
                             </Form>
                             <Message> Already a member? <Link to="/login">Login in here</Link> </Message>
                     </div>
+                    <Footer />
               </div>
             )
         }
