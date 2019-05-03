@@ -106,7 +106,7 @@ class Login extends Component {
               <Button color='black' fluid size='large' type='submit'>Log in</Button>
             </Form>
             <Message> Don't have an account? <Link to="/register">Sign up now!</Link> </Message>
-            <Message> Forget your password? <Link to="/register">Reset here!</Link> </Message>
+            {/* <Message> Forget your password? <Link to="/register">Reset here!</Link> </Message> */}
           </div>
           <Footer />
         </div>

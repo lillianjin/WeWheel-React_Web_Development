@@ -9,18 +9,33 @@ body > div > div > div > div.Register {
   display: block;
   overflow: auto;
   position: absolute;
-  height:60vh;
+  height: auto;
+  max-height: 40vw;
   width: 40vw;
   left:50%;
-  top:55%;
+  top:32vw;
   transform: translate(-50%,-50%);
   background-color: white;
   padding:3% 5%;
-  border-radius: 20px;
+  border-radius: 1vw;
 }
+
 .registerBackgroundimg{
-  position: fixed;
-  width: 100vw;
-  height: auto;
-  opacity: 0.8;
+  top: 8vw;
+  width: 100%;
+  height: 50vw;
+}
+
+.register-bg-filter {
+  position: absolute;
+  top: 8vw;
+  height: 50vw;
+  width: 100%;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  z-index: 0;
 }
