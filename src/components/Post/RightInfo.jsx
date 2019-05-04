@@ -122,5 +122,5 @@ class RightInfo extends Component {
     );
   }
 }
-
+//
 export default RightInfo;
