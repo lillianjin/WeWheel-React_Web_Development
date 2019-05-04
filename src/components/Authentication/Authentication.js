@@ -12,6 +12,7 @@ class Authentication {
 
   logout() {
     sessionStorage.removeItem("username");
+    sessionStorage.removeItem("userId");
   }
 
   isLoggedIn() {
