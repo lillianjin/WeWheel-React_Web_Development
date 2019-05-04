@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ListBox_2 from "./ListBox_2.jsx";
 import { SearchResult } from "semantic-ui-react";
-import axios from 'axios'
+import axios from "axios";
 class RightInfo extends Component {
   /*
     constructor(props) {
@@ -15,16 +15,16 @@ class RightInfo extends Component {
       isDetail: false,
       cpId: "",
       searchResult: []
-    }
+    };
 
     // this.viewDetails = this.viewDetails.bind(this);
-
   }
 
   componentDidMount() {
     console.log(this.props.curPost._id);
-    axios.get('http://localhost:4000/api/posts?limit=3')
-      .then((response) => {
+    axios
+      .get("http://54.161.49.214:4000/api/posts?limit=3")
+      .then(response => {
         console.log(response);
         //  const user = update(this.state.user, { username: { $set: response.data.data.UserName } });
         // user = update(this.state.user, { email: { $set: response.data.data.Email } });
@@ -46,29 +46,24 @@ class RightInfo extends Component {
             continue;
           }
           afterdata.push(predata[i]);
-
         }
         console.log(afterdata);
         this.setState({
           searchResult: afterdata,
           cpId: this.props.curPost._id
         });
-
-
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
       });
-
-
   }
-
 
   componentDidUpdate() {
     console.log(this.props.curPost._id);
-    axios.get('http://localhost:4000/api/posts?limit=3')
-      .then((response) => {
+    axios
+      .get("http://54.161.49.214:4000/api/posts?limit=3")
+      .then(response => {
         console.log(response);
         //  const user = update(this.state.user, { username: { $set: response.data.data.UserName } });
         // user = update(this.state.user, { email: { $set: response.data.data.Email } });
@@ -90,22 +85,17 @@ class RightInfo extends Component {
             continue;
           }
           afterdata.push(predata[i]);
-
         }
         console.log(afterdata);
         this.setState({
           searchResult: afterdata,
           cpId: this.props.curPost._id
         });
-
-
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
       });
-
-
   }
 
   // viewDetails(e, post) {
@@ -115,7 +105,6 @@ class RightInfo extends Component {
   //   });
   // }
 
-
   render() {
     /*
 
@@ -123,7 +112,7 @@ class RightInfo extends Component {
     return (
       <div className="rightinfo-container">
         <div className="yellow-box">
-          <h5 style={{fontSize: "1.3vw"}}>OTHER CAR YOU MAY LIKE NEARBY</h5>
+          <h5 style={{ fontSize: "1.3vw" }}>OTHER CAR YOU MAY LIKE NEARBY</h5>
           <ListBox_2
             cardinfo={this.state.searchResult}
             viewDetails={this.props.viewDetails}

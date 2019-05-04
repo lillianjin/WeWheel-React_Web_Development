@@ -3,7 +3,7 @@ import Axios from "axios";
 class Authentication {
   login(username) {
     sessionStorage.setItem("username", username);
-    Axios.get(`http://localhost:4000/api/users/username/${username}`).then(
+    Axios.get(`http://54.161.49.214:4000/api/users/username/${username}`).then(
       res => {
         sessionStorage.setItem("userId", res.data.data[0]._id);
       }

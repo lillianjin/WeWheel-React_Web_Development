@@ -192,7 +192,7 @@ class RentCar extends Component {
     if (this.checkInput(seats, location, startDate, endDate) === true) {
       axios
         .get(
-          `http://localhost:4000/api/posts?Capacity=${seats}&Location=${location}&StartDate=${startDate}&EndDate=${endDate}`
+          `http://54.161.49.214:4000/api/posts?Capacity=${seats}&Location=${location}&StartDate=${startDate}&EndDate=${endDate}`
         )
         .then(response => {
           let myData = response.data.data;
@@ -213,7 +213,7 @@ class RentCar extends Component {
   // search all results before the user do the filtering
   searchAll() {
     axios
-      .get(`http://localhost:4000/api/posts`)
+      .get(`http://54.161.49.214:4000/api/posts`)
       .then(response => {
         // console.log(response.data.data);
         let myData = response.data.data;
@@ -365,7 +365,11 @@ class RentCar extends Component {
         <div>
           <NavBar />
           {/* <div className="rent" /> */}
-          <Post curPost={curPost} handleGoBack={this.handleGoBack} viewDetails={this.viewDetails}/>
+          <Post
+            curPost={curPost}
+            handleGoBack={this.handleGoBack}
+            viewDetails={this.viewDetails}
+          />
           <Footer />
         </div>
       );
