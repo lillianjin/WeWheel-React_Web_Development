@@ -15,17 +15,13 @@ class RightInfo extends Component {
       isDetail: false,
       cpId: "",
       searchResult: []
-    };
+    }
 
-
-    this.viewDetails = this.viewDetails.bind(this);
+    // this.viewDetails = this.viewDetails.bind(this);
 
   }
 
   componentDidMount() {
-
-
-
     console.log(this.props.curPost._id);
     axios.get('http://localhost:4000/api/posts?limit=3')
       .then((response) => {
@@ -34,7 +30,6 @@ class RightInfo extends Component {
         // user = update(this.state.user, { email: { $set: response.data.data.Email } });
 
         //   console.log(this.state.user.UserName); // initial value
-
 
         //console.log(this.state.user.username);
         //console.log(response.data.data.UserName); // further value
@@ -70,14 +65,12 @@ class RightInfo extends Component {
   }
 
 
-
-
-  viewDetails(e, post) {
-    this.setState({
-      isDetail: !this.state.isDetail,
-      currtPost: post
-    });
-  }
+  // viewDetails(e, post) {
+  //   this.setState({
+  //     isDetail: !this.state.isDetail,
+  //     currtPost: post
+  //   });
+  // }
 
 
   render() {
@@ -90,7 +83,7 @@ class RightInfo extends Component {
           <h6>OTHER CAR YOU MAY LIKE NEARBY</h6>
           <ListBox_2
             cardinfo={this.state.searchResult}
-            viewDetails={this.viewDetails}
+            viewDetails={this.props.viewDetails}
           />
         </div>
       </div>

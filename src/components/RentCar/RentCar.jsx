@@ -113,7 +113,7 @@ class RentCar extends Component {
 
   viewDetails(e, post) {
     this.setState({
-      isDetail: !this.state.isDetail,
+      isDetail: true,
       currtPost: post
     });
   }
@@ -365,7 +365,7 @@ class RentCar extends Component {
         <div>
           <NavBar />
           {/* <div className="rent" /> */}
-          <Post curPost={curPost} handleGoBack={this.handleGoBack} />
+          <Post curPost={curPost} handleGoBack={this.handleGoBack} viewDetails={this.viewDetails}/>
           <Footer />
         </div>
       );

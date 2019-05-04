@@ -21,7 +21,7 @@ class Post extends Component {
           <div style={{ width: "75%" }}>
             <PostInfo curPost={this.props.curPost} />
           </div>
-          <RightInfo curPost = {this.props.curPost}/>
+          <RightInfo curPost = {this.props.curPost} viewDetails = {this.props.viewDetails}/>
         </div>
       </div>
     );
