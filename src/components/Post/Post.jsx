@@ -22,7 +22,7 @@ class Post extends Component {
             <PostInfo curPost={this.props.curPost} />
             <Reviews carId={this.props.curPost.CarId} />
           </div>
-          <RightInfo />
+          <RightInfo curPost = {this.props.curPost}/>
         </div>
       </div>
     );
