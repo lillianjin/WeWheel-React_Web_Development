@@ -302,14 +302,14 @@ class Userfile extends Component {
             .then((response) => {
                 console.log(response);
                 console.log(this.state.postinfo)
-                for(var i = 0; i < this.state.postinfo.length; i++){
-                  if(response.data.data.CarId === this.state.postinfo[i].CarId){
-                    this.state.postinfo.splice(i,1);
-                    this.state.user.posts.splice(this.state.user.posts.indexOf(card._id),1)
-                    break;
-                  }
+                for (var i = 0; i < this.state.postinfo.length; i++) {
+                    if (response.data.data.CarId === this.state.postinfo[i].CarId) {
+                        this.state.postinfo.splice(i, 1);
+                        this.state.user.posts.splice(this.state.user.posts.indexOf(card._id), 1)
+                        break;
+                    }
                 }
-                this.setState({Remainder:"Deletion Completed"});
+                this.setState({ Remainder: "Deletion Completed" });
             })
             .catch(function (error) {
                 // handle error
@@ -317,17 +317,24 @@ class Userfile extends Component {
             })
 
     }
-    deletemycars(e, card, username) {
-        console.log(card._id)
-        console.log(username)
-        axios.delete('http://localhost:4000/api/car/' + card._id, { data: { UserName: username } })
+    deletelikedcars(e, card, username) {
+       
+        let cur_id = Authentication.getUserId();
+        
+        axios.post('http://localhost:4000/api/favorite/delete', { userId: cur_id, carId: card._id})
+
             .then((response) => {
                 console.log(response);
+                for (var i = 0; i < this.state.likedcarsinfo.length; i++) {
+                    if (response.data.data.CarId === this.state.likedcarsinfo[i].CarId) {
+                        this.state.likedcarsinfo.splice(i, 1);
+                        this.state.user.LikedCars.splice(this.state.user.LikedCars.indexOf(card._id), 1)
+                        break;
+                    }
+                }
+                this.setState({ Remainder: "Uniliked Completed" });
+            })
 
-            })
-            .then(() => {
-                this.forceUpdate();
-            })
             .catch(function (error) {
                 // handle error
                 console.log(error);
@@ -348,12 +355,12 @@ class Userfile extends Component {
         const myposts = postinfo.map((card, i) => {
             return (
                 <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mypost" + i}>
-                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6" }}>
                         <div className="ui items">
                             <div className="item">
                                 <Image src={card.Car.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
                                 <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw" }}>
                                         {card.Car.Brand}
                                     </div>
                                     <div className="meta" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw", color: "#ff5959" }}>
@@ -361,7 +368,7 @@ class Userfile extends Component {
                                             {card.StartDate.substring(0, 10)}
                                             &nbsp; to &nbsp;
                                             {card.EndDate.substring(0, 10)}
-                                        </span> 
+                                        </span>
                                     </div>
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
                                         <div>
@@ -379,7 +386,7 @@ class Userfile extends Component {
                                             <b>{card.PricePerHour}</b>&nbsp;Per Hour
                                             &nbsp;&nbsp;|&nbsp;&nbsp;
                                             <Icon name="dollar sign" />
-                                                <b>{card.PricePerDay}</b>&nbsp;Per Day
+                                            <b>{card.PricePerDay}</b>&nbsp;Per Day
                                         </div>
                                         <div className="ui">
                                             <b>Rating:&nbsp;</b>{card.Car.Rating}/5
@@ -418,23 +425,23 @@ class Userfile extends Component {
         const mycars = mycarsinfo.map((card, i) => {
             return (
                 <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mycar" + i}>
-                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6" }}>
                         <div className="ui items">
                             <div className="item">
                                 <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
                                 <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw" }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
                                         <div>
                                             <div className="ui">
-                                            <b>Vehicle No:&nbsp;</b>
-                                            {card.Vid}
+                                                <b>Vehicle No:&nbsp;</b>
+                                                {card.Vid}
                                             </div>
                                         </div>
-                                        
+
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
@@ -451,7 +458,7 @@ class Userfile extends Component {
                                         </div>
 
                                         <div className="ui">
-                                            <b>Car Description:&nbsp;</b> <br/>
+                                            <b>Car Description:&nbsp;</b> <br />
                                             {card.Description}
                                         </div>
 
@@ -467,23 +474,23 @@ class Userfile extends Component {
         const likedcars = likedcarsinfo.map((card, i) => {
             return (
                 <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"mylike" + i}>
-                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6" }}>
                         <div className="ui items">
                             <div className="item">
                                 <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
                                 <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw" }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
                                         <div>
                                             <div className="ui">
-                                            <b>Vehicle No:&nbsp;</b>
-                                            {card.Vid}
+                                                <b>Vehicle No:&nbsp;</b>
+                                                {card.Vid}
                                             </div>
                                         </div>
-                                        
+
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
@@ -500,9 +507,20 @@ class Userfile extends Component {
                                         </div>
 
                                         <div className="ui">
-                                            <b>Car Description:&nbsp;</b> <br/>
+                                            <b>Car Description:&nbsp;</b> <br />
                                             {card.Description}
                                         </div>
+
+                                    </div>
+                                    <div className="extra" style={{ textAlign: "right", paddingRight: "3vw" }}>
+
+                                        <Button color='vk' compact basic
+                                            onClick={e => this.deletelikedcars(e, card, this.state.user.username)}
+                                            name={card}
+                                        >
+                                            <Icon name='plus square outline' />
+                                            Unlike
+                                    </Button>
 
                                     </div>
                                 </div>
@@ -516,23 +534,23 @@ class Userfile extends Component {
         const rentedcars = rentedcarsinfo.map((card, i) => {
             return (
                 <div className="ui card" style={{ width: '100%', height: 'auto', left: '0', top: "0 vw" }} key={"myrented" + i}>
-                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6"}}>
+                    <div className="content" style={{ padding: '0', backgroundColor: "#fdfdf6" }}>
                         <div className="ui items">
                             <div className="item">
                                 <Image src={card.Picture} style={{ height: "auto", maxHeight: "18vw", width: "30vw", margin: '1vw' }} />
                                 <div className="content" style={{ padding: '2vw', marginLeft: "2vw" }}>
-                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw"  }}>
+                                    <div className="header" style={{ margin: '0', fontSize: '2vw', paddingLeft: "3vw" }}>
                                         {card.Brand}
                                     </div>
 
                                     <div className="description" style={{ fontSize: '1.2vw', textAlign: "left", paddingLeft: "3vw" }}>
                                         <div>
                                             <div className="ui">
-                                            <b>Vehicle No:&nbsp;</b>
-                                            {card.Vid}
+                                                <b>Vehicle No:&nbsp;</b>
+                                                {card.Vid}
                                             </div>
                                         </div>
-                                        
+
                                         <div>
                                             <b>Seats: &nbsp;</b>
                                             {new Array(card.Capacity || 1).fill(null).map((n, i) =>
@@ -549,7 +567,7 @@ class Userfile extends Component {
                                         </div>
 
                                         <div className="ui">
-                                            <b>Car Description:&nbsp;</b> <br/>
+                                            <b>Car Description:&nbsp;</b> <br />
                                             {card.Description}
                                         </div>
 
@@ -575,36 +593,36 @@ class Userfile extends Component {
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                     <div class="usercontainer">
                         <div class="innerwrap">
-                            <section class="section1 clearfix" style={{ width: "100%", height: "auto", top: "1vw", paddingBottom: "2vw", backgroundColor: "#fdfdf6"}}>
-                                <div style={{height: "100%"}}>
-                                    <div class="row grid clearfix" style={{width:"100%", paddingBottom: "2vw", margin:"0"}}>
-                                        <div class="col2 first" style={{width:"100%"}}>
+                            <section class="section1 clearfix" style={{ width: "100%", height: "auto", top: "1vw", paddingBottom: "2vw", backgroundColor: "#fdfdf6" }}>
+                                <div style={{ height: "100%" }}>
+                                    <div class="row grid clearfix" style={{ width: "100%", paddingBottom: "2vw", margin: "0" }}>
+                                        <div class="col2 first" style={{ width: "100%" }}>
 
-                                            <h1 style={{display: "inline-block", fontFamily: "Optima, sans-serif", color: "#053f5e", fontSize: "3.5vw", fontWeight: "bold", marginTop:"2vw", marginBottom: "1vw"}}>Welcome Back,</h1>
-                                            <h1 style={{display: "inline-block", position: "relative", marginLeft: "1vw", color: "#69779b" , fontFamily: "Optima, cursive", fontSize: "2.5vw",marginTop:"2vw", marginBottom: "1vw"}}>{this.state.user.username}</h1>
+                                            <h1 style={{ display: "inline-block", fontFamily: "Optima, sans-serif", color: "#053f5e", fontSize: "3.5vw", fontWeight: "bold", marginTop: "2vw", marginBottom: "1vw" }}>Welcome Back,</h1>
+                                            <h1 style={{ display: "inline-block", position: "relative", marginLeft: "1vw", color: "#69779b", fontFamily: "Optima, cursive", fontSize: "2.5vw", marginTop: "2vw", marginBottom: "1vw" }}>{this.state.user.username}</h1>
 
                                         </div>
-                                        <div class="col2 last" style={{marginTop: "2vw", width: "100%"}}>
+                                        <div class="col2 last" style={{ marginTop: "2vw", width: "100%" }}>
                                             <div class="grid clearfix">
-                                                <div class="col3 first" style={{marginRight: "0", width: "25%"}}>
+                                                <div class="col3 first" style={{ marginRight: "0", width: "25%" }}>
 
-                                                    <h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.posts.length}</h1>
-                                                    <span style={{color: "#053f5e"}}>My Posts</span>
+                                                    <h1 style={{ marginBottom: "0", color: "#69779b", fontWeight: "normal" }}>{this.state.user.posts.length}</h1>
+                                                    <span style={{ color: "#053f5e" }}>My Posts</span>
                                                 </div>
-                                                <div class="col3" style={{marginRight: "0", width: "25%"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.MyCars.length}</h1>
-                                                    <span style={{color: "#053f5e"}}>My Cars</span></div>
+                                                <div class="col3" style={{ marginRight: "0", width: "25%" }}><h1 style={{ marginBottom: "0", color: "#69779b", fontWeight: "normal" }}>{this.state.user.MyCars.length}</h1>
+                                                    <span style={{ color: "#053f5e" }}>My Cars</span></div>
 
-                                                <div class="col3" style={{marginRight: "0", width: "25%"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.RentedCars.length}</h1>
+                                                <div class="col3" style={{ marginRight: "0", width: "25%" }}><h1 style={{ marginBottom: "0", color: "#69779b", fontWeight: "normal" }}>{this.state.user.RentedCars.length}</h1>
 
-                                                    <span style={{color: "#053f5e"}}>Rented Cars</span></div>
-                                                <div class="col3" style={{marginRight: "0", width: "25%", borderRight: "none"}}><h1 style={{marginBottom: "0", color: "#69779b", fontWeight: "normal"}}>{this.state.user.LikedCars.length}</h1>
+                                                    <span style={{ color: "#053f5e" }}>Rented Cars</span></div>
+                                                <div class="col3" style={{ marginRight: "0", width: "25%", borderRight: "none" }}><h1 style={{ marginBottom: "0", color: "#69779b", fontWeight: "normal" }}>{this.state.user.LikedCars.length}</h1>
 
-                                                    <span style={{color: "#053f5e"}}>My Likes</span></div>
+                                                    <span style={{ color: "#053f5e" }}>My Likes</span></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix" style={{ width: "100%", paddingLeft: "2vw", paddingRight: "2vw", margin: "0"}}>
-                                        <ul class="row2tab clearfix" style={{width: "100%"}}>
+                                    <div class="row clearfix" style={{ width: "100%", paddingLeft: "2vw", paddingRight: "2vw", margin: "0" }}>
+                                        <ul class="row2tab clearfix" style={{ width: "100%" }}>
                                             <li id="b1" onClick={this.clickposts}><i class="fa fa-list-alt"></i> My Posts</li>
                                             <li id="b2" onClick={this.clickmycars} ><i class="fa fa-car"></i> My Cars</li>
                                             <li id="b3" onClick={this.clickmylikes} ><i class="fa fa-heart"></i> My Likes</li>
@@ -618,7 +636,7 @@ class Userfile extends Component {
                                 </div>
 
                             </section>
-                            <section class="section2 clearfix" style={{ overflow: 'auto', postion: "fixed"}}>
+                            <section class="section2 clearfix" style={{ overflow: 'auto', postion: "fixed" }}>
                                 <Grid divided style={{ margin: "0", padding: '0' }}>
                                     <Grid.Row style={{ margin: "0" }}>
                                         {myposts}
