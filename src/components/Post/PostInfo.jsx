@@ -73,7 +73,7 @@ class PostInfo extends Component {
           </div>
           <div className="car-detail-container">
             <div className="car-model-text">
-              <strong style={{fontSize: "2.5vw"}}>{curPost.Car.Brand}</strong>
+              <strong style={{ fontSize: "2.5vw" }}>{curPost.Car.Brand}</strong>
               <Rating
                 icon="star"
                 defaultRating={curPost.Car.Rating}
@@ -91,7 +91,7 @@ class PostInfo extends Component {
             <div className="car-date">
               <strong>
                 {curPost.StartDate.substring(0, 10)}
-                      &nbsp; to &nbsp;
+                &nbsp; to &nbsp;
                 {curPost.EndDate.substring(0, 10)}
               </strong>
             </div>
@@ -107,11 +107,11 @@ class PostInfo extends Component {
                   <tr>
                     <td>
                       <Icon name="check square" color="yellow" />
-                      <strong>Air Condition</strong>
+                      <strong>Tidy</strong>
                     </td>
                     <td>
                       <Icon name="check square" color="yellow" />
-                      <strong>Diesel</strong>
+                      <strong>Gasoline</strong>
                     </td>
                     <td>
                       <Icon name="check square" color="yellow" />
@@ -124,34 +124,34 @@ class PostInfo extends Component {
             <hr />
             <div className="car-detail-button-container">
               {!userInfo ||
-              (userInfo && userInfo.RentedCars.includes(curPost.CarId)) ? (
-                <Button
-                  disabled
-                  color="black"
-                  style={{ marginRight: "1em" }}
-                  onClick={this.handleBook}
-                >
-                  Book It
+                (userInfo && userInfo.RentedCars.includes(curPost.CarId)) ? (
+                  <Button
+                    disabled
+                    color="black"
+                    style={{ marginRight: "1em" }}
+                    onClick={this.handleBook}
+                  >
+                    Book It
                 </Button>
-              ) : (
-                <Button
-                  color="black"
-                  style={{ marginRight: "1em" }}
-                  onClick={this.handleBook}
-                >
-                  Book It
+                ) : (
+                  <Button
+                    color="black"
+                    style={{ marginRight: "1em" }}
+                    onClick={this.handleBook}
+                  >
+                    Book It
                 </Button>
-              )}
+                )}
               {!userInfo ||
-              (userInfo && userInfo.LikedCars.includes(curPost.CarId)) ? (
-                <Button disabled color="black" onClick={this.handleFavorite}>
-                  Favorites
+                (userInfo && userInfo.LikedCars.includes(curPost.CarId)) ? (
+                  <Button disabled color="black" onClick={this.handleFavorite}>
+                    Favorites
                 </Button>
-              ) : (
-                <Button color="black" onClick={this.handleFavorite}>
-                  Favorites
+                ) : (
+                  <Button color="black" onClick={this.handleFavorite}>
+                    Favorites
                 </Button>
-              )}
+                )}
             </div>
           </div>
         </div>

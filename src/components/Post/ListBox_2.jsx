@@ -87,7 +87,7 @@ export class ListBox_2 extends Component {
                                     <b>{card.PricePerHour}</b>&nbsp;Per Hour
                                         &nbsp;&nbsp; | &nbsp;&nbsp;
                                     <Icon name="dollar sign" />
-                                        <b>{card.PricePerDay}</b>&nbsp;Per Day
+                                    <b>{card.PricePerDay}</b>&nbsp;Per Day
                                 </div>
                             </div>
                             <div className="extra" style={{ textAlign: "center", marginTop: "0" }}>

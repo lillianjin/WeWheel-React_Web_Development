@@ -318,10 +318,10 @@ class Userfile extends Component {
 
     }
     deletelikedcars(e, card, username) {
-       
+
         let cur_id = Authentication.getUserId();
-        
-        axios.post('http://localhost:4000/api/favorite/delete', { userId: cur_id, carId: card._id})
+
+        axios.post('http://localhost:4000/api/favorite/delete', { userId: cur_id, carId: card._id })
 
             .then((response) => {
                 console.log(response);
@@ -408,7 +408,7 @@ class Userfile extends Component {
                                             onClick={e => this.deletePost(e, card, this.state.user.username)}
                                             name={card}
                                         >
-                                            <Icon name='plus square outline' />
+                                            <Icon name='minus square outline' />
                                             Delete Post
                                     </Button>
 
@@ -518,7 +518,7 @@ class Userfile extends Component {
                                             onClick={e => this.deletelikedcars(e, card, this.state.user.username)}
                                             name={card}
                                         >
-                                            <Icon name='plus square outline' />
+                                            <Icon name='minus square outline' />
                                             Unlike
                                     </Button>
 
