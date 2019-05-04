@@ -65,6 +65,49 @@ class RightInfo extends Component {
   }
 
 
+  componentDidUpdate() {
+    console.log(this.props.curPost._id);
+    axios.get('http://localhost:4000/api/posts?limit=3')
+      .then((response) => {
+        console.log(response);
+        //  const user = update(this.state.user, { username: { $set: response.data.data.UserName } });
+        // user = update(this.state.user, { email: { $set: response.data.data.Email } });
+
+        //   console.log(this.state.user.UserName); // initial value
+
+        //console.log(this.state.user.username);
+        //console.log(response.data.data.UserName); // further value
+
+        // this.state.user.username = response.data.data.UserName;
+        let predata = [];
+        console.log(response.data.data);
+        // console.log(this.state.user.LikedCars)
+        // console.log(this.state.user.username);
+        predata = response.data.data;
+        let afterdata = [];
+        for (var i = 0; i < predata.length; i++) {
+          if (predata[i]._id == this.props.curPost._id) {
+            continue;
+          }
+          afterdata.push(predata[i]);
+
+        }
+        console.log(afterdata);
+        this.setState({
+          searchResult: afterdata,
+          cpId: this.props.curPost._id
+        });
+
+
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
+
+  }
+
   // viewDetails(e, post) {
   //   this.setState({
   //     isDetail: !this.state.isDetail,
