@@ -123,7 +123,7 @@ class RightInfo extends Component {
     return (
       <div className="rightinfo-container">
         <div className="yellow-box">
-          <h6>OTHER CAR YOU MAY LIKE NEARBY</h6>
+          <h5 style={{fontSize: "1.3vw"}}>OTHER CAR YOU MAY LIKE NEARBY</h5>
           <ListBox_2
             cardinfo={this.state.searchResult}
             viewDetails={this.props.viewDetails}

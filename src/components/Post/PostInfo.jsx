@@ -73,7 +73,7 @@ class PostInfo extends Component {
           </div>
           <div className="car-detail-container">
             <div className="car-model-text">
-              <strong>{curPost.Car.Brand}</strong>
+              <strong style={{fontSize: "2.5vw"}}>{curPost.Car.Brand}</strong>
               <Rating
                 icon="star"
                 defaultRating={curPost.Car.Rating}
@@ -83,14 +83,16 @@ class PostInfo extends Component {
               />
             </div>
             <div className="car-price-text">
-              <strong>${curPost.PricePerDay} RENT / PER DAY</strong>
+              <strong>${curPost.PricePerDay}  PER DAY</strong>
               <br />
-              <strong>${curPost.PricePerHour} RENT / PER HOUR</strong>
+              <strong>${curPost.PricePerHour}  PER HOUR</strong>
             </div>
             <hr />
             <div className="car-date">
               <strong>
-                {curPost.StartDate} - {curPost.EndDate}
+                {curPost.StartDate.substring(0, 10)}
+                      &nbsp; to &nbsp;
+                {curPost.EndDate.substring(0, 10)}
               </strong>
             </div>
             <hr />

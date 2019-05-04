@@ -21,7 +21,9 @@ export class ListBox_2 extends Component {
                         width: "100%",
                         height: "auto",
                         left: "0",
-                        top: "0"
+                        top: "0",
+                        paddingBottom: "0.5vw",
+                        marginBottom: "0"
                     }}
                     key={"card" + i}
                 >
@@ -33,16 +35,16 @@ export class ListBox_2 extends Component {
                                     style={{
                                         height: "auto",
                                         width: "26vw",
-                                        maxHeight: "16vw"
+                                        maxHeight: "16vw",
+                                        paddingBottom: "0.5vw"
                                     }}
                                 />
-
                             </div>
                         </div>
                         <div className="content" style={{ marginLeft: "0vw" }}>
                             <div
                                 className="header"
-                                style={{ margin: "0", fontSize: "1vw" }}
+                                style={{ margin: "0", fontSize: "1.2vw", fontWeight: "bold" }}
                             >
                                 {card.Car.Brand}
                             </div>
@@ -58,7 +60,7 @@ export class ListBox_2 extends Component {
                                 <span>
                                     {card.StartDate.substring(0, 10)}
                                     &nbsp; to &nbsp;
-                  {card.EndDate.substring(0, 10)}
+                                    {card.EndDate.substring(0, 10)}
                                 </span>
                             </div>
                             <div
@@ -83,23 +85,12 @@ export class ListBox_2 extends Component {
                                     <b>Price:&nbsp;</b>
                                     <Icon name="dollar sign" />
                                     <b>{card.PricePerHour}</b>&nbsp;Per Hour
-                  <div>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Icon name="dollar sign" />
+                                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                                    <Icon name="dollar sign" />
                                         <b>{card.PricePerDay}</b>&nbsp;Per Day
-                  </div>
-                                </div>
-                                <div className="ui">
-                                    <b>Rating:&nbsp;</b>
-                                    {card.Car.Rating}/5
-                </div>
-                                <div className="ui">
-                                    <b>Rent Count:&nbsp;</b>
-                                    {card.Car.RentCount}
                                 </div>
                             </div>
-
-                            <div className="extra" style={{ textAlign: "right", marginTop: "0" }}>
+                            <div className="extra" style={{ textAlign: "center", marginTop: "0" }}>
                                 <Button
                                     color="vk"
                                     compact
