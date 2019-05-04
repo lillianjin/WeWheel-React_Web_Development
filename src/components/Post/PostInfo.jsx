@@ -1,7 +1,31 @@
 import React, { Component } from "react";
 import { Button, Icon, Rating } from "semantic-ui-react";
+import Axios from "axios";
+import Authentication from "../Authentication/Authentication";
 
 class PostInfo extends Component {
+  handleBook = e => {
+    const bookObject = {
+      userId: Authentication.getUserId(),
+      carId: this.props.curPost.CarId
+    };
+    Axios.post("http://localhost:4000/api/book/add", bookObject).then(doc => {
+      alert("Book Succeed!");
+    });
+  };
+
+  handleFavorite = e => {
+    const favoriteObject = {
+      userId: Authentication.getUserId(),
+      carId: this.props.curPost.CarId
+    };
+    Axios.post("http://localhost:4000/api/favorite/add", favoriteObject).then(
+      doc => {
+        alert("Add to Favorite!");
+      }
+    );
+  };
+
   render() {
     const curPost = this.props.curPost;
     console.log(curPost);
@@ -65,10 +89,16 @@ class PostInfo extends Component {
           </div>
           <hr />
           <div className="car-detail-button-container">
-            <Button color="black" style={{ marginRight: "1em" }}>
+            <Button
+              color="black"
+              style={{ marginRight: "1em" }}
+              onClick={this.handleBook}
+            >
               Book It
             </Button>
-            <Button color="black">Favorites</Button>
+            <Button color="black" onClick={this.handleFavorite}>
+              Favorites
+            </Button>
           </div>
         </div>
       </div>
