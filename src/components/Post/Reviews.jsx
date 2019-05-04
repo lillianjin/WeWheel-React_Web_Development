@@ -96,6 +96,7 @@ class Reviews extends Component {
           <div className="review-form-container">
             <Form>
               <Rating
+                defaultRating={0}
                 onRate={this.handleRating}
                 icon="star"
                 size="huge"
