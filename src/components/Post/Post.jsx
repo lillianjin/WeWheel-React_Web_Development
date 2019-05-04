@@ -20,9 +20,8 @@ class Post extends Component {
         <div style={{ display: "flex" }}>
           <div style={{ width: "75%" }}>
             <PostInfo curPost={this.props.curPost} />
-            <Reviews carId={this.props.curPost.CarId} />
           </div>
-          <RightInfo />
+          <RightInfo curPost={this.props.curPost} />
         </div>
       </div>
     );
