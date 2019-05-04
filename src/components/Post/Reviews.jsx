@@ -18,7 +18,7 @@ class Reviews extends Component {
 
   retrieveReviews = () => {
     Axios.get(
-      `http://localhost:4000/api/comments?where={"CarId": "${
+      `http://54.161.49.214:4000/api/comments?where={"CarId": "${
         this.props.carId
       }"}`
     ).then(res => {
@@ -41,7 +41,7 @@ class Reviews extends Component {
       CarId: this.props.carId,
       UserId: Authentication.getUserId()
     };
-    Axios.post("http://localhost:4000/api/rates/createRate", ratingObject);
+    Axios.post("http://54.161.49.214:4000/api/rates/createRate", ratingObject);
   };
 
   handleSubmit = e => {
@@ -54,7 +54,7 @@ class Reviews extends Component {
       UserId: Authentication.getUserId()
     };
     Axios.post(
-      "http://localhost:4000/api/comments/createComment",
+      "http://54.161.49.214:4000/api/comments/createComment",
       reviewObject
     );
     // append current review to reviewList
@@ -96,6 +96,7 @@ class Reviews extends Component {
           <div className="review-form-container">
             <Form>
               <Rating
+                defaultRating={0}
                 onRate={this.handleRating}
                 icon="star"
                 size="huge"

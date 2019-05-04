@@ -22,7 +22,7 @@ class PostInfo extends Component {
   // get user detail info from server
   getUserInfo = async () => {
     await Axios.get(
-      `http://localhost:4000/api/users/${Authentication.getUserId()}`
+      `http://54.161.49.214:4000/api/users/${Authentication.getUserId()}`
     ).then(res => {
       const userInfo = res.data.data;
       this.setState({ userInfo: userInfo });
@@ -34,9 +34,11 @@ class PostInfo extends Component {
       userId: Authentication.getUserId(),
       carId: this.props.curPost.CarId
     };
-    Axios.post("http://localhost:4000/api/book/add", bookObject).then(doc => {
-      alert("Book Succeed!");
-    });
+    Axios.post("http://54.161.49.214:4000/api/book/add", bookObject).then(
+      doc => {
+        alert("Book Succeed!");
+      }
+    );
     let { userInfo } = this.state;
     userInfo.RentedCars.push(this.props.curPost.CarId);
     this.setState({ userInfo });
@@ -47,11 +49,12 @@ class PostInfo extends Component {
       userId: Authentication.getUserId(),
       carId: this.props.curPost.CarId
     };
-    Axios.post("http://localhost:4000/api/favorite/add", favoriteObject).then(
-      doc => {
-        alert("Add to Favorite!");
-      }
-    );
+    Axios.post(
+      "http://54.161.49.214:4000/api/favorite/add",
+      favoriteObject
+    ).then(doc => {
+      alert("Add to Favorite!");
+    });
     let { userInfo } = this.state;
     userInfo.LikedCars.push(this.props.curPost.CarId);
     this.setState({ userInfo });
@@ -83,9 +86,9 @@ class PostInfo extends Component {
               />
             </div>
             <div className="car-price-text">
-              <strong>${curPost.PricePerDay}  PER DAY</strong>
+              <strong>${curPost.PricePerDay} PER DAY</strong>
               <br />
-              <strong>${curPost.PricePerHour}  PER HOUR</strong>
+              <strong>${curPost.PricePerHour} PER HOUR</strong>
             </div>
             <hr />
             <div className="car-date">
@@ -124,34 +127,34 @@ class PostInfo extends Component {
             <hr />
             <div className="car-detail-button-container">
               {!userInfo ||
-                (userInfo && userInfo.RentedCars.includes(curPost.CarId)) ? (
-                  <Button
-                    disabled
-                    color="black"
-                    style={{ marginRight: "1em" }}
-                    onClick={this.handleBook}
-                  >
-                    Book It
+              (userInfo && userInfo.RentedCars.includes(curPost.CarId)) ? (
+                <Button
+                  disabled
+                  color="black"
+                  style={{ marginRight: "1em" }}
+                  onClick={this.handleBook}
+                >
+                  Book It
                 </Button>
-                ) : (
-                  <Button
-                    color="black"
-                    style={{ marginRight: "1em" }}
-                    onClick={this.handleBook}
-                  >
-                    Book It
+              ) : (
+                <Button
+                  color="black"
+                  style={{ marginRight: "1em" }}
+                  onClick={this.handleBook}
+                >
+                  Book It
                 </Button>
-                )}
+              )}
               {!userInfo ||
-                (userInfo && userInfo.LikedCars.includes(curPost.CarId)) ? (
-                  <Button disabled color="black" onClick={this.handleFavorite}>
-                    Favorites
+              (userInfo && userInfo.LikedCars.includes(curPost.CarId)) ? (
+                <Button disabled color="black" onClick={this.handleFavorite}>
+                  Favorites
                 </Button>
-                ) : (
-                  <Button color="black" onClick={this.handleFavorite}>
-                    Favorites
+              ) : (
+                <Button color="black" onClick={this.handleFavorite}>
+                  Favorites
                 </Button>
-                )}
+              )}
             </div>
           </div>
         </div>
