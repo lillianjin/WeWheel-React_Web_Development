@@ -76,7 +76,7 @@ class PostInfo extends Component {
               <strong>{curPost.Car.Brand}</strong>
               <Rating
                 icon="star"
-                defaultRating={curPost.Car.Rating / curPost.Car.RentCount}
+                defaultRating={curPost.Car.Rating}
                 maxRating={5}
                 disabled
                 style={{ position: "absolute", right: "1em" }}
