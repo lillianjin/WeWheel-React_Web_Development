@@ -69,6 +69,8 @@ class Reviews extends Component {
 
   render() {
     const { reviewList } = this.state;
+    const userInfo = this.props.userInfo;
+    const carId = this.props.carId;
 
     return (
       <div className="review-container">
@@ -90,35 +92,37 @@ class Reviews extends Component {
           </tbody>
         </table>
         <hr />
-        <div className="review-form-container">
-          <Form>
-            <Rating
-              onRate={this.handleRating}
-              icon="star"
-              size="huge"
-              maxRating={5}
-              style={{ margin: "1em 0" }}
-            />
-            <TextArea
-              onChange={this.handleChange}
-              value={this.state.reviewContent}
-              name="reviewContent"
-              placeholder="Write your review here!"
-            />
-            <div style={{ margin: "1em auto" }}>
-              <Button
-                onClick={this.handleSubmit}
-                color="black"
-                style={{ marginRight: "1em" }}
-              >
-                Submit
-              </Button>
-              <Button color="black" onClick={this.handleClear}>
-                Clear
-              </Button>
-            </div>
-          </Form>
-        </div>
+        {userInfo && userInfo.RentedCars.includes(carId) && (
+          <div className="review-form-container">
+            <Form>
+              <Rating
+                onRate={this.handleRating}
+                icon="star"
+                size="huge"
+                maxRating={5}
+                style={{ margin: "1em 0" }}
+              />
+              <TextArea
+                onChange={this.handleChange}
+                value={this.state.reviewContent}
+                name="reviewContent"
+                placeholder="Write your review here!"
+              />
+              <div style={{ margin: "1em auto" }}>
+                <Button
+                  onClick={this.handleSubmit}
+                  color="black"
+                  style={{ marginRight: "1em" }}
+                >
+                  Submit
+                </Button>
+                <Button color="black" onClick={this.handleClear}>
+                  Clear
+                </Button>
+              </div>
+            </Form>
+          </div>
+        )}
       </div>
     );
   }

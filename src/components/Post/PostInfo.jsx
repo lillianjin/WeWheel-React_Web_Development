@@ -153,9 +153,7 @@ class PostInfo extends Component {
             </div>
           </div>
         </div>
-        {userInfo && userInfo.RentedCars.includes(curPost.CarId) && (
-          <Reviews carId={curPost.CarId} />
-        )}
+        <Reviews carId={curPost.CarId} userInfo={userInfo} />
       </div>
     );
   }
